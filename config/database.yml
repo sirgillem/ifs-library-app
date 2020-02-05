@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: ifs-library-app_production
-  username: ifs-library-app
-  password: <%= ENV['IFS-LIBRARY-APP_DATABASE_PASSWORD'] %>
+  database: infullsw_portalv3
+  username: <%= ENV['LIB_USER'] %>
+  password: <%= ENV['LIB_PWD'] %>
+  socket: /var/lib/mysql/mysql.sock
