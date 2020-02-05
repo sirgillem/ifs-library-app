@@ -2,5 +2,14 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/infullsw/rubyapps/library/
-    - /bin/cp -r /app/* $DEPLOYPATH
+    - /bin/cp -r app/* $DEPLOYPATH/app
+    - /bin/cp -r bin/* $DEPLOYPATH/bin
+    - /bin/cp -r config/* $DEPLOYPATH/config
+    - /bin/cp -r db/* $DEPLOYPATH/db
+    - /bin/cp -r lib/* $DEPLOYPATH/lib
+    - /bin/cp -r public/* $DEPLOYPATH/public
+    - /bin/cp -r vendor/* $DEPLOYPATH/vendor
+    - /bin/cp config.ru $DEPLOYPATH
+    - /bin/cp Gemfile $DEPLOYPATH
+    - /bin/cp Gemfile.lock $DEPLOYPATH
     - /bin/cp Rakefile $DEPLOYPATH
