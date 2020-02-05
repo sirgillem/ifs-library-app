@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/infullsw/rubyapps/library/
+    - /bin/cp -r /app/* $DEPLOYPATH
     - /bin/cp Rakefile $DEPLOYPATH
