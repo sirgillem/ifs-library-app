@@ -11,4 +11,10 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'title', "Home | #{@base_title}"
   end
+
+  test 'should get contact' do
+    get contact_path
+    assert_response :success
+    assert_select 'title', "Contact | #{@base_title}"
+  end
 end
