@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
-  get '/signup', to: 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
