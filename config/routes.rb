@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
   root 'application#home'
   get '/catalogue', to: 'application#temp'
   # The priority is based upon order of creation: first created -> highest priority.
