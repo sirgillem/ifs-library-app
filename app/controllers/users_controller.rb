@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :is_authorised
 
   def index
+    @users = User.all
   end
 
   def show
