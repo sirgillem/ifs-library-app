@@ -22,16 +22,16 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should not get show as user or not logged in" do
-    get :show, id: 1
+    get :show, id: @bob.id
     assert_redirected_to '/'
     sign_in @bob
-    get :show, id: 1
+    get :show, id: @bob.id
     assert_redirected_to '/'
   end
 
   test "should get show as admin" do
     sign_in @admin
-    get :show, id: 1
+    get :show, id: @bob.id
     assert_response :success
   end
 
