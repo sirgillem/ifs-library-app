@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
+  scope '/admin' do
+    resources :users
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

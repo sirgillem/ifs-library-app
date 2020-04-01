@@ -34,25 +34,11 @@ class UserActionsTest < ActionDispatch::IntegrationTest
   end
 
   test "user cannot edit other user" do
-    sign_in @user
-    params = {
-      'user[email]' => 'me@me.net', 
-      'user[current_password]' => 'password'
-    }
-    patch user_registration_path(@admin), params
-    @admin.reload
-    assert_equal 'admin@example.net', @admin.email
+    assert false, "Fix me when admin interface built"
   end
 
   test "admin can edit other user" do
-    sign_in @admin
-    params = {
-      'user[email]' => 'me@me.net', 
-      'user[current_password]' => 'password'
-    }
-    patch user_registration_path(@user), params
-    @user.reload
-    assert_equal 'me@me.net', @user.email
+    assert false, 'Fix me when admin interface built'
   end
 
 end
