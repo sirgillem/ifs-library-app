@@ -35,20 +35,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should not get new as user or not logged in" do
-    get :new
-    assert_redirected_to '/'
-    sign_in @bob
-    get :new
-    assert_redirected_to '/'
-  end
-
-  test "should get new as admin" do
-    sign_in @admin
-    get :new
-    assert_response :success
-  end
-
   test "should redirect destroy when not logged in" do
     assert_no_difference 'User.count' do
       post :destroy, id: @admin.id

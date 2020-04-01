@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
   scope '/admin' do
-    resources :users
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
