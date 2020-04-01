@@ -3,6 +3,7 @@
   <td><%= user.email %></td>
   <td><%= if user.admin? then 'Yes' else 'No' end %></td>
   <td><%= if user.librarian? then 'Yes' else 'No' end %></td>
+  <td><%= if not user.invitation_accepted_at? then 'No' end %></td>
   <td>
     <%= link_to 'edit', user %>
     <% if current_user != user %>

@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    punk = User.find(params[:id])
+    email = punk.email
+    punk.destroy
+    flash[:notice] = "User #{email} deleted"
+    redirect_to users_path
   end
 
   private

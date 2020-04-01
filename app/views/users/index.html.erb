@@ -1,6 +1,8 @@
 <% provide :title, 'All users' %>
 <h1>All users</h1>
 
+<%= link_to 'Invite user', new_user_invitation_path, html_options = { class: 'invite' } %>
+
 <table class="users">
   <thead>
     <tr>
@@ -8,6 +10,7 @@
       <th>Email</th>
       <th>Admin</th>
       <th>Librarian</th>
+      <th>Registered</th>
       <th>Actions</th>
     </tr>
   </thead>
