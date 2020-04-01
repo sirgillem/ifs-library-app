@@ -19,6 +19,8 @@ gem 'bootstrap-sass'
 
 # Use Devise for user management
 gem 'devise'
+# Invite users through email
+gem 'devise_invitable', '1.7.5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
