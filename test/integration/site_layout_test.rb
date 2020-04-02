@@ -25,7 +25,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', contact_path
     assert_select 'a[href=?]', 'https://www.infullswing.org.au'
     assert_select 'a[href=?]', destroy_user_session_path
-    assert_select 'a[href=?]', user_registration_path
+    assert_select 'a[href=?]', edit_user_registration_path
     assert_select 'a[href=?]', users_path
   end
 
@@ -37,7 +37,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', contact_path
     assert_select 'a[href=?]', 'https://www.infullswing.org.au'
     assert_select 'a[href=?]', destroy_user_session_path
-    assert_select 'a[href=?]', user_registration_path
+    assert_select 'a[href=?]', edit_user_registration_path
     assert_select 'a[href=?]', users_path, count: 0
   end
 end
