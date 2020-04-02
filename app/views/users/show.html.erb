@@ -1,2 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.email %></h1>
+<ul class="roles">
+  <% if @user.admin? %>
+    <li>Admin</li>
+  <% end %>
+  <% if @user.librarian? %>
+    <li>Librarian</li>
+  <% end %>
+</ul>
+<p>Invited by:
+  <% if @user.invited_by_id %>
+    <%= User.find(@user.invited_by_id) %>
+  <% else %>
+    No-one
+  <% end %>
+</p>
+<h3>Actions</h3>
+<div class="actions">
+  <%= link_to 'edit', edit_user_path(@user) %>
+  <% unless @user == current_user %>
+    <%= link_to 'delete', @user, method: :delete, 
+                          data: { confirm: "Delete user #{@user.email}?" } %>
+  <% end %>
+</div>

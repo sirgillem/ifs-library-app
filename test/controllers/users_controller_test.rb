@@ -21,7 +21,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     User.all.each do |user|
       # should have edit links for all users
-      assert_select 'a[href=?]', user_path(user), text: 'edit'
+      assert_select 'a[href=?]', user_path(user), text: 'details'
       # should have delete links for all users except self
       if user != @admin
         assert_select 'a[href=?]', user_path(user), text: 'delete'
@@ -45,6 +45,24 @@ class UsersControllerTest < ActionController::TestCase
     sign_in @admin
     get :show, id: @bob.id
     assert_response :success
+    assert_match @bob.email, @response.body
+  end
+
+  test 'should get appropriate details in show' do
+    sign_in @admin
+    get :show, id: @admin.id
+    assert_response :success
+    assert_select 'li', text: 'Admin'
+    assert_select 'li', text: 'Librarian'
+    assert_select 'a[href=?]', edit_user_path(@admin)
+    assert_select 'a[href=?]', user_path(@admin), text: 'delete', count: 0
+
+    get :show, id: @bob.id
+    assert_response :success
+    assert_select 'li', text: 'Admin', count: 0
+    assert_select 'li', text: 'Librarian', count: 0
+    assert_select 'a[href=?]', edit_user_path(@bob)
+    assert_select 'a[href=?]', user_path(@bob), text: 'delete'
   end
 
   test 'should redirect destroy when not logged in' do
