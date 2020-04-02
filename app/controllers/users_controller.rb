@@ -1,5 +1,7 @@
+# Admin interface controller for users
+# User level interactions are handled by the Devise controller
 class UsersController < ApplicationController
-  before_action :is_authorised
+  before_action :authorised?
 
   def index
     @users = User.all
@@ -38,9 +40,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password,
                                  :password_confirmation, :admin, :librarian)
   end
-  
+
   # Only allow admin users access to these controls
-  def is_authorised
-    redirect_to(root_url) unless current_user and current_user.admin?
+  def authorised?
+    redirect_to(root_url) unless current_user && current_user.admin?
   end
 end

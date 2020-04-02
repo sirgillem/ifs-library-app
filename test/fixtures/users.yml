@@ -17,3 +17,9 @@ bob:
   username: bob
   admin: false
   librarian: false
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  email: <%= "user-#{n}@example.com" %>
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+<% end %>
