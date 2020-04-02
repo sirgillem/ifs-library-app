@@ -1,2 +1,23 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide :title, 'Edit user' %>
+<h1>Edit user <%= @user.email %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @user, url: { action: 'update' } do |f| %>
+      <%= render "devise/shared/error_messages", resource: @user %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <br/>
+
+      <%= f.check_box :admin %>
+      <%= f.label :admin %>
+      <br/>
+
+      <%= f.check_box :librarian %>
+      <%= f.label :librarian %>
+      <br/>
+
+      <%= f.submit 'Save changes', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
