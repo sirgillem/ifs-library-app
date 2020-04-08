@@ -22,5 +22,8 @@ module IfsLibraryApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add a prefix to our tables in the database
+    config.active_record.table_name_prefix = 'library_'
   end
 end
