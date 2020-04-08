@@ -15,6 +15,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', contact_path
     assert_select 'a[href=?]', 'https://www.infullswing.org.au'
     assert_select 'a[href=?]', new_user_session_path
+    assert_select 'a[href=?]', edit_user_registration_path, count: 0
   end
 
   test 'links for admin user' do

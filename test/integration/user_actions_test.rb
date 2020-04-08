@@ -57,6 +57,11 @@ class UserActionsTest < ActionDispatch::IntegrationTest
       post user_invitation_path, params
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
+    # User can sign in
+    new_user = assigns(:user)
+    sign_in new_user
+    get root_url
+    assert_select 'a[href=?]', edit_user_registration_path
   end
 
   test 'only create users through invitations' do
