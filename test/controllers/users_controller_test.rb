@@ -87,4 +87,44 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to users_url
   end
+
+  test 'cannot edit as non-admin' do
+    sign_in @bob
+    get :edit, id: @admin.id
+    assert_redirected_to '/'
+    patch :update, id: @bob.id, user: { email: 'new@email.com',
+                                        admin: true,
+                                        librarian: true }
+    assert_redirected_to '/'
+    @bob.reload
+    assert_not @bob.admin?
+    assert_not @bob.librarian?
+  end
+
+  test 'unsuccessful admin edit' do
+    sign_in @admin
+    get :edit, id: @admin.id
+    assert_template 'users/edit'
+    patch :update, id: @admin.id, user: { email: 'invalid' }
+    assert_template 'users/edit'
+    assert_select 'div#error_explanation', /.*1 error.*/
+  end
+
+  test 'successful admin edit' do
+    sign_in @admin
+    get :edit, id: @bob.id
+    assert_template 'users/edit'
+    email = 'new@email.com'
+    assert_not @bob.admin?
+    assert_not @bob.librarian?
+    patch :update, id: @bob.id, user: { email: email,
+                                        admin: true,
+                                        librarian: true }
+    assert_not flash.empty?
+    assert_redirected_to @bob
+    @bob.reload
+    assert_equal email, @bob.email
+    assert @bob.admin?
+    assert @bob.librarian?
+  end
 end
