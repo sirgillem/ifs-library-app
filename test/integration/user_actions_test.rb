@@ -9,6 +9,16 @@ class UserActionsTest < ActionDispatch::IntegrationTest
     ActionMailer::Base.deliveries.clear
   end
 
+  test 'can log in' do
+    get new_user_session_path
+    assert_response :success
+    assert_template 'devise/sessions/new/'
+    sign_in @user
+    assert_response :success
+    get root_url
+    assert_select 'a[href=?]', edit_user_registration_path
+  end
+
   test 'can edit own information' do
     sign_in users(:bob)
     patch user_registration_path, 'user[email]' => 'me@me.net',
@@ -53,15 +63,18 @@ class UserActionsTest < ActionDispatch::IntegrationTest
       'user[password]' => 'password',
       'user[password_confirmation]' => 'password'
     }
+    get new_user_invitation_path
+    assert_response :success
     assert_difference 'User.count', 1 do
       post user_invitation_path, params
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
-    # User can sign in
+    sign_out @user
+    # User needs to set a password
     new_user = assigns(:user)
-    sign_in new_user
-    get root_url
-    assert_select 'a[href=?]', edit_user_registration_path
+    assert_not new_user.invitation_accepted_at
+
+    # TODO: test user setting password pages
   end
 
   test 'only create users through invitations' do
@@ -76,5 +89,11 @@ class UserActionsTest < ActionDispatch::IntegrationTest
     assert_raise ActionController::RoutingError do
       post user_registration_path, params
     end
+  end
+
+  test 'can reset password' do
+    get new_user_password_path
+    assert_response :success
+    # TODO: test resetting of password
   end
 end
