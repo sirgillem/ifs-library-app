@@ -25,5 +25,8 @@ module IfsLibraryApp
 
     # Add a prefix to our tables in the database
     config.active_record.table_name_prefix = 'library_'
+
+    # Ignore other tables in the database
+    ActiveRecord::SchemaDumper.ignore_tables = [/^portal/]
   end
 end
