@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: :registrations
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
   scope '/admin' do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+  end
+  devise_scope :user do
+    resource :registration,
+      only: [:cancel, :edit, :update, :destroy],
+      path: 'users',
+      controller: 'devise/registrations',
+      as: :user_registration do
+        get :cancel
+      end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
