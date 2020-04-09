@@ -69,7 +69,7 @@ Rails.application.configure do
     address:    'infullswing.org.au',
     port:       '587',
     authentication: :plain,
-    user_name:      ENV['EMAIL_USERNAME']
+    user_name:      ENV['EMAIL_USERNAME'],
     password:       ENV['EMAIL_PASSWORD']
   }
 
