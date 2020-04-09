@@ -4,3 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+task :db_migrate do
+  Rake::Task['db:migrate'].invoke
+end
