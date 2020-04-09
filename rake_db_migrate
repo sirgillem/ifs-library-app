@@ -1,4 +1,0 @@
-!#/bin/bash
-
-# Run a migration - to get around web host blocking commands with ':' in them
-rake db:migrate
