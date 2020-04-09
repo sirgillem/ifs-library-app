@@ -8,3 +8,7 @@ Rails.application.load_tasks
 task :db_migrate do
   Rake::Task['db:migrate'].invoke
 end
+
+task :assets_precompile do
+  Rake::Task['assets:precompile'].invoke
+end
