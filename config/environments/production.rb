@@ -42,7 +42,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -67,11 +67,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:    'mail.infullswing.org.au',
-    port:       '465',
-    authentication: :login,
+    port:       '587',
+    authentication: :plain,
     user_name:      ENV['EMAIL_USERNAME'],
-    password:       ENV['EMAIL_PASSWORD'],
-    ssl: true
+    password:       ENV['EMAIL_PASSWORD']
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
