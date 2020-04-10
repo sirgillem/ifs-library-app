@@ -64,13 +64,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'www.infullswing.org.au' }
+  # Email send settings. verify_mode set to VERIFY_NONE due to name mismatch
+  # in the site's SSL certificate
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:    'mail.infullswing.org.au',
     port:       '587',
     authentication: :login,
     user_name:      ENV['EMAIL_USERNAME'],
-    password:       ENV['EMAIL_PASSWORD']
+    password:       ENV['EMAIL_PASSWORD'],
+    openssl_verify_mode: OpenSSL::SSL::VERIFY_NONE
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
