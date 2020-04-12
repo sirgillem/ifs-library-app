@@ -1,0 +1,13 @@
+<tr>
+  <td>publisher.name</td>
+  <td><=% link_to publisher.website, publisher.website %></td>
+  <td class="actions">
+    <% if current_user.librarian? %>
+      <%= link_to 'Edit', edit_publisher_path(publisher),
+                  class: "btn btn-primary" %>
+      <%= link_to 'delete', publisher, method: :delete, 
+        data: { confirm: "Delete #{publisher.name}?" },
+        class: "btn" %>
+    <% end %> 
+  </td>
+</tr>
