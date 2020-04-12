@@ -59,9 +59,7 @@ class UserActionsTest < ActionDispatch::IntegrationTest
   test 'should invite user when logged in' do
     sign_in @user
     params = {
-      'user[email]' => 'foo@bar.web',
-      'user[password]' => 'password',
-      'user[password_confirmation]' => 'password'
+      'user[email]' => 'new_user@new_user.com'
     }
     get new_user_invitation_path
     assert_response :success

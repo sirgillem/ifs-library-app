@@ -1,7 +1,7 @@
 # Control resources for publishers
 class PublishersController < ApplicationController
-  before_action :librarian?, only: [:new, :create, :edit, :update, :destroy]
   before_action :logged_in?
+  before_action :librarian?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @publishers = Publisher.all
