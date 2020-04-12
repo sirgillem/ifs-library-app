@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PublisherTest < ActiveSupport::TestCase
   test 'Publisher needs a name' do
-    new_pub = Publisher.new(name: '', website: 'www.example.com')
+    new_pub = Publisher.new(name: '  ', website: 'www.example.com')
     assert_not new_pub.valid?
   end
 

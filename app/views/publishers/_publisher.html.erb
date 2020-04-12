@@ -1,6 +1,6 @@
 <tr>
-  <td>publisher.name</td>
-  <td><=% link_to publisher.website, publisher.website %></td>
+  <td><%= publisher.name %></td>
+  <td><%= link_to publisher.website, publisher.website %></td>
   <td class="actions">
     <% if current_user.librarian? %>
       <%= link_to 'Edit', edit_publisher_path(publisher),
