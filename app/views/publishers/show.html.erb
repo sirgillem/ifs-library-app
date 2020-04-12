@@ -1,2 +1,5 @@
-<h1>Publishers#show</h1>
-<p>Find me in app/views/publishers/show.html.erb</p>
+<% provide :title, @publisher.name %>
+
+<h1><%= @publisher.name %></h1>
+
+<%= link_to @publisher.website, @publisher.full_url %>
