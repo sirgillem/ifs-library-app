@@ -37,11 +37,11 @@ class PublishersControllerTest < ActionController::TestCase
 
   test 'should not create as non-librarian' do
     assert_no_difference 'Publisher.count' do
-      post :create, name: 'New', website: 'www.example.com'
+      post :create, publisher: { name: 'New', website: 'www.example.com' }
     end
     assert_redirected_to '/'
     assert_no_difference 'Publisher.count' do
-      post :create, name: 'New', website: 'www.example.com'
+      post :create, publisher: { name: 'New', website: 'www.example.com' }
     end
     assert_redirected_to '/'
   end
@@ -49,7 +49,7 @@ class PublishersControllerTest < ActionController::TestCase
   test 'should create as librarian' do
     sign_in @librarian
     assert_difference 'Publisher.count', 1 do
-      post :create, name: 'New publisher', website: 'www.example.com'
+      post :create, publisher: { name: 'New', website: 'www.example.com' }
     end
   end
 
@@ -100,12 +100,12 @@ class PublishersControllerTest < ActionController::TestCase
   test 'should update as librarian' do
     pub = Publisher.first
     name = 'Foobar Inc.'
-    email = 'foobar@foobar.pub'
+    website = 'www.foobar.com'
     sign_in @librarian
-    post :update, id: pub.id, name: name, email: email
+    post :update, id: pub.id, publisher: { name: name, website: website}
     pub.reload
     assert_equal name, pub.name
-    assert_equal email, pub.email
+    assert_equal website, pub.website
   end
 
   test 'should not destroy as non-librarian' do
@@ -122,7 +122,7 @@ class PublishersControllerTest < ActionController::TestCase
     assert_redirected_to controller: 'publishers', action: 'index'
   end
 
-  test 'should get destroy' do
+  test 'should destroy as librarian' do
     sign_in @librarian
     assert_difference 'Publisher.count', -1 do
       post :destroy, id: Publisher.first.id
