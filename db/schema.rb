@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200401103510) do
+ActiveRecord::Schema.define(version: 20200412055128) do
+
+  create_table "publishers", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.string   "website",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "publishers", ["name"], name: "index_library_publishers_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
