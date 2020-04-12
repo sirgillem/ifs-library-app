@@ -42,7 +42,7 @@ class PublishersController < ApplicationController
     pub = Publisher.find(params[:id])
     pub.destroy
     flash[:notice] = "Publisher #{pub.name} deleted"
-    redirect_to 'index'
+    redirect_to publishers_path
   end
 
   private

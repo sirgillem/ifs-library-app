@@ -72,7 +72,7 @@ class PublishersControllerTest < ActionController::TestCase
     assert_redirected_to '/'
     sign_in @limited_admin
     get :edit, id: pubid
-    assert_redirected_to controller: 'publishers', action: 'show'
+    assert_redirected_to controller: 'publishers', action: 'index'
   end
 
   test 'should get edit as librarian' do
