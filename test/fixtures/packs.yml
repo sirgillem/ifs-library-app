@@ -1,11 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+easy_pack_1:
+  name: Easy Jazz Pack
+  publisher: pub1
+  serial: 'EJP-01'
 
-one:
-  name: MyString
-  publisher_id: 
-  serial: MyString
+versioned_song:
+  name: Night and Day
+  publisher: pub2
+  serial: 'X2345DyF4873'
 
-two:
-  name: MyString
-  publisher_id: 
-  serial: MyString
+easy_pack_2:
+  name: Easy Jazz Pack 2
+  publisher: pub1
+  serial: 'EJP-02'
