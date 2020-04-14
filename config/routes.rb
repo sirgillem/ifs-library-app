@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :packs
   devise_for :users, skip: :registrations
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
   resources :publishers
+  resources :packs
   scope '/admin' do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
