@@ -1,6 +1,6 @@
 # Record information on publishers
 class Publisher < ActiveRecord::Base
-  has_many :pack
+  has_many :packs
   validates :name, presence: true
 
   # Define a full URL for the website so it can be linked to correctly
