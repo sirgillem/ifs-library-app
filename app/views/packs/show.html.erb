@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pack.name %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @pack.publisher %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @pack.serial %>
+</p>
+
+<%= link_to 'Edit', edit_pack_path(@pack) %> |
+<%= link_to 'Back', packs_path %>
