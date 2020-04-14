@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class PacksControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
   setup do
     @pack = packs(:easy_pack_1)
     @librarian = users(:librarian)
@@ -61,7 +62,7 @@ class PacksControllerTest < ActionController::TestCase
 
   test 'should redirect show pack when not logged in' do
     get :show, id: @pack
-    assert_redirectd_to '/'
+    assert_redirected_to '/'
   end
 
   test 'should get edit as librarian' do
