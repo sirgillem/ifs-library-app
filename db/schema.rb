@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200412055128) do
+ActiveRecord::Schema.define(version: 20200414080639) do
+
+  create_table "packs", force: :cascade do |t|
+    t.string   "name",         limit: 255, null: false
+    t.integer  "publisher_id", limit: 4,   null: false
+    t.string   "serial",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "packs", ["publisher_id"], name: "index_library_packs_on_publisher_id", using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -49,4 +59,5 @@ ActiveRecord::Schema.define(version: 20200412055128) do
   add_index "users", ["invited_by_id"], name: "index_library_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_library_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "packs", "publishers"
 end
