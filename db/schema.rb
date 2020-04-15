@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200414080639) do
+ActiveRecord::Schema.define(version: 20200415070342) do
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -31,6 +31,29 @@ ActiveRecord::Schema.define(version: 20200414080639) do
   end
 
   add_index "publishers", ["name"], name: "index_library_publishers_on_name", unique: true, using: :btree
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "label",        limit: 255
+    t.integer  "publisher_id", limit: 4
+    t.string   "serial",       limit: 255
+    t.text     "details",      limit: 65535
+    t.text     "notes_perf",   limit: 65535
+    t.text     "notes_lib",    limit: 65535
+    t.integer  "pack_id",      limit: 4
+    t.string   "recording",    limit: 255
+    t.string   "style",        limit: 255
+    t.integer  "duration",     limit: 4
+    t.integer  "tempo",        limit: 4
+    t.date     "purchased_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "songs", ["label"], name: "index_library_songs_on_label", using: :btree
+  add_index "songs", ["pack_id"], name: "index_library_songs_on_pack_id", using: :btree
+  add_index "songs", ["publisher_id"], name: "index_library_songs_on_publisher_id", using: :btree
+  add_index "songs", ["title"], name: "index_library_songs_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -60,4 +83,6 @@ ActiveRecord::Schema.define(version: 20200414080639) do
   add_index "users", ["reset_password_token"], name: "index_library_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "packs", "publishers"
+  add_foreign_key "songs", "packs"
+  add_foreign_key "songs", "publishers"
 end
