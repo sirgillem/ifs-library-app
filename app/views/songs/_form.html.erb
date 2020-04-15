@@ -19,10 +19,8 @@
     <%= f.label :label %><br>
     <%= f.text_field :label %>
   </div>
-  <div class="field">
-    <%= f.label :publisher_id %><br>
-    <%= f.text_field :publisher_id %>
-  </div>
+  <%= render partial: 'publishers/publisher_select', locals: { f: f,
+                                                               include_blank: true } %>
   <div class="field">
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
