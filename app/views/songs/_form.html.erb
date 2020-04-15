@@ -22,6 +22,10 @@
   <%= render partial: 'publishers/publisher_select', locals: { f: f,
                                                                include_blank: true } %>
   <div class="field">
+    <%= f.label :pack_id %><br>
+    <%= f.select :pack_id, Pack.all.collect { |p| [ p.name, p.id] }, { include_blank: true } %>
+  </div>
+  <div class="field">
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
   </div>
@@ -36,10 +40,6 @@
   <div class="field">
     <%= f.label :notes_lib %><br>
     <%= f.text_area :notes_lib %>
-  </div>
-  <div class="field">
-    <%= f.label :pack_id %><br>
-    <%= f.text_field :pack_id %>
   </div>
   <div class="field">
     <%= f.label :recording %><br>
