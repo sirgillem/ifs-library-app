@@ -1,3 +1,4 @@
+<% provide :title, @song.title %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,8 +13,19 @@
 
 <p>
   <strong>Publisher:</strong>
-  <%= @song.publisher %>
+  <% if @song.publisher %>
+    <%= link_to @song.publisher %>
+  <% else %>
+    <%= link_to @song.pack.publisher %>
+  <% end %>
 </p>
+
+<% if @song.pack %>
+  <p>
+    <strong>Pack:</strong>
+    <%= link_to @song.pack %>
+  </p>
+<% end %>
 
 <p>
   <strong>Serial:</strong>
@@ -26,18 +38,13 @@
 </p>
 
 <p>
-  <strong>Notes perf:</strong>
+  <strong>Performance notes:</strong>
   <%= @song.notes_perf %>
 </p>
 
 <p>
-  <strong>Notes lib:</strong>
+  <strong>Librarian notes:</strong>
   <%= @song.notes_lib %>
-</p>
-
-<p>
-  <strong>Pack:</strong>
-  <%= @song.pack %>
 </p>
 
 <p>
