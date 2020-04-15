@@ -3,3 +3,13 @@
 <p>
   This is the home page for the In Full Swing catalogue app.
 </p>
+<% if user_signed_in? %>
+  <h2>Catalogue links</h2>
+  <ul>
+    <li><%= link_to 'All Songs', songs_path %></li>
+    <li><%= link_to 'All Song Packs', packs_path %></li>
+    <li><%= link_to 'All Publishers', publishers_path %></li>
+  </ul>
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
