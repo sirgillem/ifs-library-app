@@ -1,12 +1,12 @@
 opus_one:
   title: Opus One
   label: 64
-  publisher_id: pub1 
+  publisher: pub1 
   serial: XY71342
   details: 
   notes_perf: Don't take it too fast!
   notes_lib: Missing score original
-  pack_id: 
+  pack: 
   recording: https://www.youtube.com/watch?v=2e1yG17SHS8
   style: Swing
   duration: 280
@@ -16,12 +16,12 @@ opus_one:
 jingle_bells:
   title: Jingle Bells
   label: X5
-  publisher_id: pub1 
+  publisher: pub1 
   serial: XY71343
   details: As performed by Count Basie
   notes_perf: Solo Tenor 1 55_78
   notes_lib: 
-  pack_id: 
+  pack: 
   recording: 
   style: Swing
   duration: 150
@@ -31,7 +31,7 @@ jingle_bells:
 night_and_day_hkm:
   title: Night and Day
   label: 60
-  publisher_id: 
+  publisher: 
   serial: 786234
   details: High Key (Male)
   notes_perf: We use this one
@@ -46,7 +46,7 @@ night_and_day_hkm:
 night_and_day_lkf:
   title: Night and Day
   label: 60
-  publisher_id: 
+  publisher: 
   serial: 786234
   details: Low Key (Female)
   notes_perf: Don't use this one!

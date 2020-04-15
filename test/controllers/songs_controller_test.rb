@@ -1,49 +1,137 @@
 require 'test_helper'
 
 class SongsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
   setup do
-    @song = songs(:one)
+    @song = songs(:opus_one)
+    @librarian = users(:librarian)
+    @charles = users(:limited_admin)
+
+    @song_params = { details: @song.details,
+                     duration: @song.duration,
+                     label: @song.label,
+                     notes_lib: @song.notes_lib,
+                     notes_perf: @song.notes_perf,
+                     pack: @song.pack,
+                     publisher: @song.publisher,
+                     purchased_at: @song.purchased_at,
+                     recording: @song.recording,
+                     serial: @song.serial,
+                     style: @song.style,
+                     tempo: @song.tempo,
+                     title: @song.title }
   end
 
-  test "should get index" do
+  test 'should not get index when not logged in' do
+    get :index
+    assert_redirected_to '/'
+  end
+
+  test 'should get index when logged in' do
+    sign_in @charles
     get :index
     assert_response :success
     assert_not_nil assigns(:songs)
   end
 
-  test "should get new" do
+  test 'should not get new as non-librarian' do
+    get :new
+    assert_redirected_to '/'
+    sign_in @charles
+    get :new
+    assert_redirected_to controller: 'songs', action: 'index'
+  end
+
+  test 'should get new as librarian' do
+    sign_in @librarian
     get :new
     assert_response :success
   end
 
-  test "should create song" do
+  test 'should create song as librarian' do
+    sign_in @librarian
     assert_difference('Song.count') do
-      post :create, song: { details: @song.details, duration: @song.duration, label: @song.label, notes_lib: @song.notes_lib, notes_perf: @song.notes_perf, pack_id: @song.pack_id, publisher_id: @song.publisher_id, purchased_at: @song.purchased_at, recording: @song.recording, serial: @song.serial, style: @song.style, tempo: @song.tempo, title: @song.title }
+      post :create, song: @song_params
     end
 
     assert_redirected_to song_path(assigns(:song))
   end
 
-  test "should show song" do
+  test 'should not create song as non-librarian' do
+    assert_no_difference 'Song.count' do
+      post :create, song: @song_params
+    end
+
+    sign_in @charles
+    assert_no_difference 'Song.count' do
+      post :create, song: @song_params
+    end
+  end
+
+  test 'should show song as any user' do
+    sign_in @charles
     get :show, id: @song
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should not show song when not logged in' do
+    get :show, id: @song
+    assert_redirected_to '/'
+  end
+
+  test 'should get edit as librarian' do
+    sign_in @librarian
     get :edit, id: @song
     assert_response :success
   end
 
-  test "should update song" do
-    patch :update, id: @song, song: { details: @song.details, duration: @song.duration, label: @song.label, notes_lib: @song.notes_lib, notes_perf: @song.notes_perf, pack_id: @song.pack_id, publisher_id: @song.publisher_id, purchased_at: @song.purchased_at, recording: @song.recording, serial: @song.serial, style: @song.style, tempo: @song.tempo, title: @song.title }
-    assert_redirected_to song_path(assigns(:song))
+  test 'should not get edit as non-librarian' do
+    get :edit, id: @song
+    assert_redirected_to '/'
+    sign_in @charles
+    get :edit, id: @song
+    assert_redirected_to controller: 'songs', action: 'index'
   end
 
-  test "should destroy song" do
+  test 'should update song as librarian' do
+    sign_in @librarian
+    @song_params[:title] = 'New title'
+    patch :update, id: @song, song: @song_params
+    assert_redirected_to song_path(assigns(:song))
+    @song.reload
+    assert_equal 'New title', @song.title
+  end
+
+  test 'should not update song as non-librarian' do
+    @song_params[:title] = 'New title'
+    patch :update, id: @song, song: @song_params
+    assert_redirected_to '/'
+    @song.reload
+    assert_not_equal 'New title', @song.title
+    sign_in @charles
+    patch :update, id: @song, song: @song_params
+    assert_redirected_to controller: 'songs', action: 'index'
+    @song.reload
+    assert_not_equal 'New title', @song.title
+  end
+
+  test 'should destroy song as librarian' do
+    sign_in @librarian
     assert_difference('Song.count', -1) do
       delete :destroy, id: @song
     end
 
     assert_redirected_to songs_path
+  end
+
+  test 'should not destroy song as non-librarian' do
+    assert_no_difference 'Song.count' do
+      delete :destroy, id: @song
+    end
+
+    sign_in @charles
+    assert_no_difference 'Song.count' do
+      delete :destroy, id: @song
+    end
   end
 end

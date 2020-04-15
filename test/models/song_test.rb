@@ -8,7 +8,7 @@ class SongTest < ActiveSupport::TestCase
   test 'Song must have publisher or pack' do
     assert @song.valid?
     @song.publisher = nil
-    assert_not @song.valid?
+    assert @song.valid?
     @song.pack = packs(:easy_pack_1)
     assert @song.valid?
     @song.publisher = publishers(:pub1)
@@ -27,7 +27,7 @@ class SongTest < ActiveSupport::TestCase
     @song.tempo = -1
     assert_not @song.valid?
     @song.tempo = 1
-    assert @song.valid
+    assert @song.valid?
   end
 
   test 'Song duration must be positive if it exists' do
@@ -36,6 +36,6 @@ class SongTest < ActiveSupport::TestCase
     @song.duration = -1
     assert_not @song.valid?
     @song.duration = 1
-    assert @song.valid
+    assert @song.valid?
   end
 end
