@@ -12,4 +12,8 @@ class Publisher < ActiveRecord::Base
       "http://#{website}"
     end
   end
+
+  def to_s
+    name
+  end
 end

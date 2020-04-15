@@ -16,4 +16,12 @@ class Song < ActiveRecord::Base
       errors.add :base, 'Must belong to either a pack or a publisher'
     end
   end
+
+  def to_s
+    if label
+      "#{label} - #{name}"
+    else
+      name
+    end
+  end
 end
