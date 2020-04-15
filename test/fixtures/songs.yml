@@ -1,4 +1,4 @@
-opus-one:
+opus_one:
   title: Opus One
   label: 64
   publisher_id: pub1 
@@ -11,24 +11,24 @@ opus-one:
   style: Swing
   duration: 280
   tempo: 150
-  purchased_at: 2020-04-15
+  purchased_at: 2020_04_15
 
-jingle-bells:
+jingle_bells:
   title: Jingle Bells
   label: X5
   publisher_id: pub1 
   serial: XY71343
   details: As performed by Count Basie
-  notes_perf: Solo Tenor 1 55-78
+  notes_perf: Solo Tenor 1 55_78
   notes_lib: 
   pack_id: 
   recording: 
   style: Swing
   duration: 150
   tempo: 200
-  purchased_at: 2020-04-15
+  purchased_at: 2020_04_15
 
-night-and-day-hkm:
+night_and_day_hkm:
   title: Night and Day
   label: 60
   publisher_id: 
@@ -41,9 +41,9 @@ night-and-day-hkm:
   style: Swing
   duration: 220
   tempo: 138
-  purchased_at: 2020-04-15
+  purchased_at: 2020_04_15
 
-night-and-day-lkf:
+night_and_day_lkf:
   title: Night and Day
   label: 60
   publisher_id: 
@@ -56,4 +56,4 @@ night-and-day-lkf:
   style: Swing
   duration: 220
   tempo: 138
-  purchased_at: 2020-04-15
+  purchased_at: 2020_04_15
