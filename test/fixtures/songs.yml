@@ -1,31 +1,59 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  label: MyString
-  publisher_id: 
-  serial: MyString
-  details: MyText
-  notes_perf: MyText
-  notes_lib: MyText
+opus-one:
+  title: Opus One
+  label: 64
+  publisher_id: pub1 
+  serial: XY71342
+  details: 
+  notes_perf: Don't take it too fast!
+  notes_lib: Missing score original
   pack_id: 
-  recording: MyString
-  style: MyString
-  duration: 
-  tempo: 
+  recording: https://www.youtube.com/watch?v=2e1yG17SHS8
+  style: Swing
+  duration: 280
+  tempo: 150
   purchased_at: 2020-04-15
 
-two:
-  title: MyString
-  label: MyString
-  publisher_id: 
-  serial: MyString
-  details: MyText
-  notes_perf: MyText
-  notes_lib: MyText
+jingle-bells:
+  title: Jingle Bells
+  label: X5
+  publisher_id: pub1 
+  serial: XY71343
+  details: As performed by Count Basie
+  notes_perf: Solo Tenor 1 55-78
+  notes_lib: 
   pack_id: 
-  recording: MyString
-  style: MyString
-  duration: 
-  tempo: 
+  recording: 
+  style: Swing
+  duration: 150
+  tempo: 200
+  purchased_at: 2020-04-15
+
+night-and-day-hkm:
+  title: Night and Day
+  label: 60
+  publisher_id: 
+  serial: 786234
+  details: High Key (Male)
+  notes_perf: We use this one
+  notes_lib: 
+  pack: versioned_song
+  recording: 
+  style: Swing
+  duration: 220
+  tempo: 138
+  purchased_at: 2020-04-15
+
+night-and-day-hkm:
+  title: Night and Day
+  label: 60
+  publisher_id: 
+  serial: 786234
+  details: Low Key (Female)
+  notes_perf: Don't use this one!
+  notes_lib: Maybe remove label from this
+  pack: versioned_song
+  recording: 
+  style: Swing
+  duration: 220
+  tempo: 138
   purchased_at: 2020-04-15
