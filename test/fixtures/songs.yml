@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  label: MyString
+  publisher_id: 
+  serial: MyString
+  details: MyText
+  notes_perf: MyText
+  notes_lib: MyText
+  pack_id: 
+  recording: MyString
+  style: MyString
+  duration: 
+  tempo: 
+  purchased_at: 2020-04-15
+
+two:
+  title: MyString
+  label: MyString
+  publisher_id: 
+  serial: MyString
+  details: MyText
+  notes_perf: MyText
+  notes_lib: MyText
+  pack_id: 
+  recording: MyString
+  style: MyString
+  duration: 
+  tempo: 
+  purchased_at: 2020-04-15

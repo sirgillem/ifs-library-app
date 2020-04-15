@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @song.title %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @song.label %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @song.publisher %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @song.serial %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @song.details %>
+</p>
+
+<p>
+  <strong>Notes perf:</strong>
+  <%= @song.notes_perf %>
+</p>
+
+<p>
+  <strong>Notes lib:</strong>
+  <%= @song.notes_lib %>
+</p>
+
+<p>
+  <strong>Pack:</strong>
+  <%= @song.pack %>
+</p>
+
+<p>
+  <strong>Recording:</strong>
+  <%= @song.recording %>
+</p>
+
+<p>
+  <strong>Style:</strong>
+  <%= @song.style %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @song.duration %>
+</p>
+
+<p>
+  <strong>Tempo:</strong>
+  <%= @song.tempo %>
+</p>
+
+<p>
+  <strong>Purchased at:</strong>
+  <%= @song.purchased_at %>
+</p>
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>

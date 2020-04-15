@@ -1,0 +1,69 @@
+<%= form_for(@song) do |f| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :label %><br>
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :publisher_id %><br>
+    <%= f.text_field :publisher_id %>
+  </div>
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br>
+    <%= f.text_area :details %>
+  </div>
+  <div class="field">
+    <%= f.label :notes_perf %><br>
+    <%= f.text_area :notes_perf %>
+  </div>
+  <div class="field">
+    <%= f.label :notes_lib %><br>
+    <%= f.text_area :notes_lib %>
+  </div>
+  <div class="field">
+    <%= f.label :pack_id %><br>
+    <%= f.text_field :pack_id %>
+  </div>
+  <div class="field">
+    <%= f.label :recording %><br>
+    <%= f.text_field :recording %>
+  </div>
+  <div class="field">
+    <%= f.label :style %><br>
+    <%= f.text_field :style %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.text_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :tempo %><br>
+    <%= f.text_field :tempo %>
+  </div>
+  <div class="field">
+    <%= f.label :purchased_at %><br>
+    <%= f.date_select :purchased_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
