@@ -72,7 +72,7 @@
   <%= @song.purchased_at %>
 </p>
 
-<%= render 'song_parts/member_list', locals: { resource: @song } %>
+<%= render partial: 'song_parts/member_list', locals: { resource: @song } %>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
