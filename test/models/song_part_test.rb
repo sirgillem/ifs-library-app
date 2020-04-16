@@ -14,7 +14,7 @@ class SongPartTest < ActiveSupport::TestCase
     assert p.valid?
     p.song = nil
     assert_not p.valid?
-    p.template = templates(:bigband)
+    p.song_template = song_templates(:bigband)
     assert p.valid?
     p.song = songs(:opus_one)
     assert_not p.valid?
