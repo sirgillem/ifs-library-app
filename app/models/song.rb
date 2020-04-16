@@ -17,7 +17,7 @@ class Song < ActiveRecord::Base
 
   def to_s
     if label
-      "#{label} - #{name}"
+      "#{label} - #{title}"
     else
       name
     end

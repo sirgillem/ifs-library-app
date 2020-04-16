@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :song_id %><br>
-    <%= f.select :song_id, Song.all.collect { |s| [ s.name, s.id] }, { include_blank: true } %>
+    <%= f.select :song_id, Song.all.collect { |s| [ s.title, s.id] }, { include_blank: true } %>
   </div>
   <div class="field">
     <%= f.label :song_template_id %><br>
