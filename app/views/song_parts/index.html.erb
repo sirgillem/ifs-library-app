@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Song Parts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th>Name</th>
+      <th>Scanned</th>
+      <th>Notes</th>
+      <th>Template</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @song_parts.each do |song_part| %>
+      <tr>
+        <td><%= song_part.song %></td>
+        <td><%= song_part.name %></td>
+        <td><%= song_part.scanned %></td>
+        <td><%= song_part.notes %></td>
+        <td><%= song_part.template %></td>
+        <td><%= link_to 'Show', song_part %></td>
+        <td><%= link_to 'Edit', edit_song_part_path(song_part) %></td>
+        <td><%= link_to 'Destroy', song_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Song part', new_song_part_path %>

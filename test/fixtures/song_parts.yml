@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  song_id: 
+  name: MyString
+  scanned: false
+  notes: MyText
+  template_id: 
+
+two:
+  song_id: 
+  name: MyString
+  scanned: false
+  notes: MyText
+  template_id: 

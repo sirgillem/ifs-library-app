@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :song_parts
   devise_for :users, skip: :registrations
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
