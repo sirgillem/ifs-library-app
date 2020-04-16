@@ -1,15 +1,12 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+opus_one_tenor1:
+  song: opus_one
+  name: Tenor 1
+  scanned: true
+  notes: No solo
 
-one:
-  song_id: 
-  name: MyString
-  scanned: false
-  notes: MyText
-  template_id: 
-
-two:
-  song_id: 
-  name: MyString
-  scanned: false
-  notes: MyText
-  template_id: 
+<% parts = ['alto1','alto2','tenor1','tenor2','bari'] %>
+<% parts.each do |part| %>
+  templ_<%= part %>:
+    name: <%= part %>
+    template: bigband
+<% end %>
