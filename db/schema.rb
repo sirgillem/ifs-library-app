@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200416092521) do
+ActiveRecord::Schema.define(version: 20200416095258) do
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20200416092521) do
   end
 
   add_index "publishers", ["name"], name: "index_library_publishers_on_name", unique: true, using: :btree
+
+  create_table "song_parts", force: :cascade do |t|
+    t.integer  "song_id",          limit: 4
+    t.string   "name",             limit: 255
+    t.boolean  "scanned"
+    t.text     "notes",            limit: 65535
+    t.integer  "song_template_id", limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "song_parts", ["song_id"], name: "index_library_song_parts_on_song_id", using: :btree
+  add_index "song_parts", ["song_template_id"], name: "index_library_song_parts_on_song_template_id", using: :btree
 
   create_table "song_templates", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -89,6 +102,8 @@ ActiveRecord::Schema.define(version: 20200416092521) do
   add_index "users", ["reset_password_token"], name: "index_library_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "packs", "publishers"
+  add_foreign_key "song_parts", "song_templates"
+  add_foreign_key "song_parts", "songs"
   add_foreign_key "songs", "packs"
   add_foreign_key "songs", "publishers"
 end

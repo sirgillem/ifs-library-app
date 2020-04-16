@@ -5,7 +5,7 @@ class CreateSongParts < ActiveRecord::Migration
       t.string :name
       t.boolean :scanned
       t.text :notes
-      t.references :template, index: true
+      t.references :song_template, index: true
 
       t.timestamps null: false
     end

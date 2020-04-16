@@ -1,6 +1,6 @@
 class SongPart < ActiveRecord::Base
   belongs_to :song
-  belongs_to :template
+  belongs_to :song_template
   validate :owner?
   validates :name, presence: true
 
