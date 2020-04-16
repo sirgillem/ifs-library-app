@@ -10,7 +10,7 @@ class SongPartsControllerTest < ActionController::TestCase
     @song_part_params = { name: @song_part.name,
                           scanned: @song_part.scanned,
                           notes: @song_part.notes,
-                          song_id: @song_part.id }
+                          song_id: @song_part.song_id }
   end
 
   test 'should not get index when not logged in' do
@@ -41,6 +41,7 @@ class SongPartsControllerTest < ActionController::TestCase
 
   test 'should create song_part as librarian' do
     sign_in @librarian
+    @song_part_params[:name] = 'Drum Kit'
     assert_difference('SongPart.count') do
       post :create, song_part: @song_part_params
     end

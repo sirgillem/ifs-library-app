@@ -71,7 +71,7 @@ class SongPartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_part_params
-      params.require(:song_part).permit(:song_id, :name, :scanned, :notes, :template_id)
+      params.require(:song_part).permit(:song_id, :name, :scanned, :notes, :song_template_id)
     end
 
     # Check that a user is logged in before showing anything
