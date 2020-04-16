@@ -47,6 +47,12 @@ class SongPartsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to song_part_path(assigns(:song_part))
+
+    @song_part_params[:song_id] = nil
+    @song_part_params[:song_template_id] = song_templates(:bigband).id
+    assert_difference('SongPart.count') do
+      post :create, song_part: @song_part_params
+    end
   end
 
   test 'should not create song_part as non-librarian' do
