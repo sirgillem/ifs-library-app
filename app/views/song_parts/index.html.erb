@@ -7,10 +7,9 @@
   <thead>
     <tr>
       <th>Song</th>
-      <th>Name</th>
-      <th>Scanned</th>
+      <th>Part</th>
       <th>Notes</th>
-      <th>Template</th>
+      <th>Scanned</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,11 +17,16 @@
   <tbody>
     <% @song_parts.each do |song_part| %>
       <tr>
-        <td><%= song_part.song %></td>
+        <td>
+          <% if song_part.song %>
+            <%= song_part.song %>
+          <% else %>
+            [T] <%= song_part.song_template %>
+          <% end %>
+        </td>
         <td><%= song_part.name %></td>
-        <td><%= song_part.scanned %></td>
         <td><%= song_part.notes %></td>
-        <td><%= song_part.song_template %></td>
+        <td><%= song_part.scanned %></td>
         <td><%= link_to 'Show', song_part %></td>
         <td><%= link_to 'Edit', edit_song_part_path(song_part) %></td>
         <td><%= link_to 'Destroy', song_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
