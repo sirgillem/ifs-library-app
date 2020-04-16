@@ -6,11 +6,11 @@ class SongPart < ActiveRecord::Base
 
   # A part must belong to either a song or a song template
   def owner?
-    if song && template
+    if song && song_template
       errors.add :base, 'Part cannot belong to both a song and a song template'
     end
 
-    unless song || template
+    unless song || song_template
       errors.add :base, 'Part must belong to either a song or a template'
     end
   end
