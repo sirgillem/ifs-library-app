@@ -16,10 +16,10 @@ class Song < ActiveRecord::Base
   end
 
   def to_s
-    if label
-      "#{label} - #{title}"
+    if label.empty?
+      title
     else
-      name
+      "#{label} - #{title}"
     end
   end
 end
