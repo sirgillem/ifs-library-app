@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+bigband:
+  name: Standard Big Band
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+windorch:
+  name: Wind Orchestra
