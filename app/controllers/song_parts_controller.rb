@@ -1,4 +1,6 @@
 class SongPartsController < ApplicationController
+  before_action :logged_in?
+  before_action :librarian?, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_song_part, only: [:show, :edit, :update, :destroy]
 
   # GET /song_parts
@@ -70,5 +72,15 @@ class SongPartsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_part_params
       params.require(:song_part).permit(:song_id, :name, :scanned, :notes, :template_id)
+    end
+
+    # Check that a user is logged in before showing anything
+    def logged_in?
+      redirect_to '/' unless current_user
+    end
+
+    # Check if the current user is a librarian before modifying anything
+    def librarian?
+      redirect_to song_parts_path unless current_user && current_user.librarian?
     end
 end
