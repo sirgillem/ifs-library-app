@@ -6,5 +6,7 @@
   <%= @song_template.name %>
 </p>
 
+<%= render 'song_parts/member_list', locals: { resource: @song_template } %>
+
 <%= link_to 'Edit', edit_song_template_path(@song_template) %> |
 <%= link_to 'Back', song_templates_path %>
