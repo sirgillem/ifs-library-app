@@ -3,23 +3,11 @@ require 'test_helper'
 class SongTemplatesControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
   setup do
-    @song_template = song_templates(:opus_one)
+    @song_template = song_templates(:bigband)
     @librarian = users(:librarian)
     @charles = users(:limited_admin)
 
-    @song_template_params = { details: @song_template.details,
-                              duration: @song_template.duration,
-                              label: @song_template.label,
-                              notes_lib: @song_template.notes_lib,
-                              notes_perf: @song_template.notes_perf,
-                              pack: @song_template.pack,
-                              publisher: @song_template.publisher,
-                              purchased_at: @song_template.purchased_at,
-                              recording: @song_template.recording,
-                              serial: @song_template.serial,
-                              style: @song_template.style,
-                              tempo: @song_template.tempo,
-                              title: @song_template.title }
+    @song_template_params = { name: @song_template.name }
   end
 
   test 'should not get index when not logged in' do
@@ -95,24 +83,24 @@ class SongTemplatesControllerTest < ActionController::TestCase
 
   test 'should update song_template as librarian' do
     sign_in @librarian
-    @song_template_params[:title] = 'New title'
+    @song_template_params[:name] = 'New name'
     patch :update, id: @song_template, song_template: @song_template_params
     assert_redirected_to song_template_path(assigns(:song_template))
     @song_template.reload
-    assert_equal 'New title', @song_template.title
+    assert_equal 'New name', @song_template.name
   end
 
   test 'should not update song_template as non-librarian' do
-    @song_template_params[:title] = 'New title'
+    @song_template_params[:name] = 'New name'
     patch :update, id: @song_template, song_template: @song_template_params
     assert_redirected_to '/'
     @song_template.reload
-    assert_not_equal 'New title', @song_template.title
+    assert_not_equal 'New name', @song_template.name
     sign_in @charles
     patch :update, id: @song_template, song_template: @song_template_params
     assert_redirected_to controller: 'song_templates', action: 'index'
     @song_template.reload
-    assert_not_equal 'New title', @song_template.title
+    assert_not_equal 'New name', @song_template.name
   end
 
   test 'should destroy song_template as librarian' do

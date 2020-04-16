@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200415070342) do
+ActiveRecord::Schema.define(version: 20200416092521) do
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 20200415070342) do
   end
 
   add_index "publishers", ["name"], name: "index_library_publishers_on_name", unique: true, using: :btree
+
+  create_table "song_templates", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "songs", force: :cascade do |t|
     t.string   "title",        limit: 255
