@@ -6,7 +6,7 @@ opus_one_tenor1:
 
 <% parts = ['alto1','alto2','tenor1','tenor2','bari'] %>
 <% parts.each do |part| %>
-  templ_<%= part %>:
-    name: <%= part %>
-    template: bigband
+templ_<%= part %>:
+  name: <%= part %>
+  song_template: bigband
 <% end %>
