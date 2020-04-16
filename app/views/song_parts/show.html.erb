@@ -1,10 +1,17 @@
 <% provide :title, @song_part %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Song:</strong>
-  <%= @song_part.song %>
-</p>
+<% if @song_part.song %>
+  <p>
+    <strong>Song:</strong>
+    <%= @song_part.song %>
+  </p>
+<% else %>
+  <p>
+    <strong>Template:</strong>
+    <%= @song_part.song_template %>
+  </p>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -19,11 +26,6 @@
 <p>
   <strong>Notes:</strong>
   <%= @song_part.notes %>
-</p>
-
-<p>
-  <strong>Template:</strong>
-  <%= @song_part.template %>
 </p>
 
 <%= link_to 'Edit', edit_song_part_path(@song_part) %> |
