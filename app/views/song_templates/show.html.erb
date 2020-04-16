@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @song_template.name %>
+</p>
+
+<%= link_to 'Edit', edit_song_template_path(@song_template) %> |
+<%= link_to 'Back', song_templates_path %>
