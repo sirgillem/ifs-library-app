@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :people
   devise_for :users, skip: :registrations
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :song_templates
   resources :song_parts
+  resources :people
   scope '/admin' do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
