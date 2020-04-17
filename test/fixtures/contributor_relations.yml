@@ -1,15 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  contributable_id: 
-  contributable_type: Contributable
-  person_id: 
-  role: MyString
+  contributable: opus_one
+  contributable_type: Song
+  person: johndoe
+  role: Words
   sequence: 1
 
 two:
-  contributable_id: 
-  contributable_type: Contributable
-  person_id: 
-  role: MyString
-  sequence: 1
+  contributable: opus_one
+  contributable_type: Song
+  person: beethoven
+  role: Music
+  sequence: 2
