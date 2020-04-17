@@ -1,21 +1,26 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+johndoe:
+  pre_names: John
+  key_name: Doe
 
-one:
-  pre_titles: MyString
-  pre_names: MyString
-  key_name_prefix: MyString
-  key_name: MyString
-  post_names: MyString
-  key_name_suffix: MyString
-  qualifications: MyString
-  post_titles: MyString
+complexname:
+  pre_titles: Lord Dr.
+  pre_names: Isaac Blamey
+  key_name_prefix: de
+  key_name: Burgh
+  key_name_suffix: VI
+  qualifications: OBE, BPhil
+  post_titles: Earl of Middlesex
 
-two:
-  pre_titles: MyString
-  pre_names: MyString
-  key_name_prefix: MyString
-  key_name: MyString
-  post_names: MyString
-  key_name_suffix: MyString
-  qualifications: MyString
-  post_titles: MyString
+beethoven:
+  pre_names: Ludwig
+  key_name_prefix: van
+  key_name: Beethoven
+
+harry:
+  pre_names: Harry
+  key_name: Connick
+  key_name_suffix: Jr.
+
+bjork:
+  key_name: Björk
+  post_names: Guðmundsdóttir

@@ -12,8 +12,8 @@ class Person < ActiveRecord::Base
 
   # Get the sorting key of the person
   def sort_name
-    ordered_names = [key_name, pre_titles, pre_names, key_name_prefix,
-                     post_names, key_name_suffix, qualifications, post_titles]
+    ordered_names = [key_name, pre_names, key_name_prefix, post_names,
+                     pre_titles, key_name_suffix, qualifications, post_titles]
     ordered_names.reject(&:blank?).join(', ')
   end
 end
