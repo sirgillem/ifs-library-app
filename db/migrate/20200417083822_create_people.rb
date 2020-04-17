@@ -4,7 +4,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :pre_titles
       t.string :pre_names
       t.string :key_name_prefix
-      t.string :key_name
+      t.string :key_name, null: false
       t.string :post_names
       t.string :key_name_suffix
       t.string :qualifications
