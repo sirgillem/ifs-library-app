@@ -1,0 +1,49 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pre_titles %><br>
+    <%= f.text_field :pre_titles %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_names %><br>
+    <%= f.text_field :pre_names %>
+  </div>
+  <div class="field">
+    <%= f.label :key_name_prefix %><br>
+    <%= f.text_field :key_name_prefix %>
+  </div>
+  <div class="field">
+    <%= f.label :key_name %><br>
+    <%= f.text_field :key_name %>
+  </div>
+  <div class="field">
+    <%= f.label :post_names %><br>
+    <%= f.text_field :post_names %>
+  </div>
+  <div class="field">
+    <%= f.label :key_name_suffix %><br>
+    <%= f.text_field :key_name_suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :qualifications %><br>
+    <%= f.text_field :qualifications %>
+  </div>
+  <div class="field">
+    <%= f.label :post_titles %><br>
+    <%= f.text_field :post_titles %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

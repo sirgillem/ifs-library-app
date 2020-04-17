@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pre_titles: MyString
+  pre_names: MyString
+  key_name_prefix: MyString
+  key_name: MyString
+  post_names: MyString
+  key_name_suffix: MyString
+  qualifications: MyString
+  post_titles: MyString
+
+two:
+  pre_titles: MyString
+  pre_names: MyString
+  key_name_prefix: MyString
+  key_name: MyString
+  post_names: MyString
+  key_name_suffix: MyString
+  qualifications: MyString
+  post_titles: MyString
