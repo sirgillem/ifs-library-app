@@ -1,4 +1,5 @@
 class Song < ActiveRecord::Base
+  include Contributable
   belongs_to :publisher
   belongs_to :pack
   has_many :song_parts, dependent: :destroy

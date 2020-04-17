@@ -1,4 +1,5 @@
 class Pack < ActiveRecord::Base
+  include Contributable
   belongs_to :publisher, required: true
   has_many :songs, dependent: :nullify
   validates :name, presence: true
