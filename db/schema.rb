@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200417113120) do
+ActiveRecord::Schema.define(version: 20200417113825) do
+
+  create_table "contributor_relations", force: :cascade do |t|
+    t.integer  "contributable_id",   limit: 4
+    t.string   "contributable_type", limit: 255
+    t.integer  "person_id",          limit: 4
+    t.string   "role",               limit: 255
+    t.integer  "sequence",           limit: 4,   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "contributor_relations", ["contributable_type", "contributable_id"], name: "index_library_contributor_relations_on_contributable", using: :btree
+  add_index "contributor_relations", ["person_id"], name: "index_library_contributor_relations_on_person_id", using: :btree
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -117,6 +130,7 @@ ActiveRecord::Schema.define(version: 20200417113120) do
   add_index "users", ["invited_by_id"], name: "index_library_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_library_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "contributor_relations", "people"
   add_foreign_key "packs", "publishers"
   add_foreign_key "song_parts", "song_templates"
   add_foreign_key "song_parts", "songs"

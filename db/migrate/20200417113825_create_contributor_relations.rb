@@ -1,7 +1,8 @@
 class CreateContributorRelations < ActiveRecord::Migration
   def change
     create_table :contributor_relations do |t|
-      t.references :contributable, polymorphic: true, index: true
+      t.references :contributable, polymorphic: true,
+                                   index: { name: :index_library_contributor_relations_on_contributable }
       t.references :person, index: true
       t.string :role
       t.integer :sequence, null: false
