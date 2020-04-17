@@ -11,3 +11,10 @@ two:
   person: beethoven
   role: Music
   sequence: 2
+
+three:
+  contributable: easy_pack_1
+  contributable_type: Pack
+  person: johndoe
+  role: Words
+  sequence: 1

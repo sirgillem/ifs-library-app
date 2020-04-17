@@ -38,4 +38,20 @@ class SongTest < ActiveSupport::TestCase
     @song.duration = 1
     assert @song.valid?
   end
+
+  test 'Can add contributors' do
+    john = people(:johndoe)
+    @song.add_contributor(john, 'Tested')
+    assert_equal @song.contributor_relations.last.person, john
+    assert_equal @song.contributor_relations.last.role, 'Tested'
+    assert @song.contributor_relations.last.valid?
+  end
+
+  test 'Can remove contributors' do
+    john = people(:johndoe)
+    @song.remove_contributor(john)
+    @song.contributor_relations.each do |rel|
+      assert_not_equal rel.person, john
+    end
+  end
 end

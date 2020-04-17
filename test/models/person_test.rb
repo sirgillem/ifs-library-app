@@ -45,4 +45,22 @@ class PersonTest < ActiveSupport::TestCase
                    qualifications: 'PhD')
     assert_equal 'Doe, John, PhD', p.sort_name
   end
+
+  test 'should contribute to a song' do
+    john = people(:johndoe)
+    opus_one = songs(:opus_one)
+    john.contribute_to(opus_one, 'Tested')
+    assert_equal opus_one.contributor_relations.last.person, john
+    assert_equal opus_one.contributor_relations.last.role, 'Tested'
+    assert opus_one.contributor_relations.last.valid?
+  end
+
+  test 'should contribute to a pack' do
+    john = people(:johndoe)
+    ejp = packs(:easy_pack_1)
+    john.contribute_to(ejp, 'Compiled')
+    assert_equal ejp.contributor_relations.last.person, john
+    assert_equal ejp.contributor_relations.last.role, 'Compiled'
+    assert ejp.contributor_relations.last.valid?
+  end
 end

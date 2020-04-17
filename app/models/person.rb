@@ -21,4 +21,14 @@ class Person < ActiveRecord::Base
                      pre_titles, key_name_suffix, qualifications, post_titles]
     ordered_names.reject(&:blank?).join(', ')
   end
+
+  # Contribute to a contributable record
+  def contribute_to(contributable, role)
+    max_seq = contributable.contributor_relations.last.sequence
+    rel = ContributorRelation.new(contributable: contributable,
+                                  person: self,
+                                  role: role,
+                                  sequence: max_seq + 1)
+    contributable.contributor_relations << rel
+  end
 end
