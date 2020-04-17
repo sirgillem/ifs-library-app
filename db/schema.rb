@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200417083822) do
+ActiveRecord::Schema.define(version: 20200417113120) do
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20200417083822) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "people", ["key_name"], name: "index_library_people_on_key_name", using: :btree
+  add_index "people", ["pre_names"], name: "index_library_people_on_pre_names", using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
