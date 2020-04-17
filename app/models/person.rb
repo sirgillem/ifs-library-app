@@ -3,6 +3,7 @@ class Person < ActiveRecord::Base
     order(:key_name, :pre_names, :key_name_prefix, :post_names,
           :pre_titles, :key_name_suffix, :qualifications, :post_titles)
   end
+  has_many :contributor_relations, dependent: :destroy
   validates :key_name, presence: true
 
   # Get the concatenated full name of the person
