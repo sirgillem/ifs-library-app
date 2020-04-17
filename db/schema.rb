@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200416095258) do
+ActiveRecord::Schema.define(version: 20200417083822) do
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20200416095258) do
   end
 
   add_index "packs", ["publisher_id"], name: "index_library_packs_on_publisher_id", using: :btree
+
+  create_table "people", force: :cascade do |t|
+    t.string   "pre_titles",      limit: 255
+    t.string   "pre_names",       limit: 255
+    t.string   "key_name_prefix", limit: 255
+    t.string   "key_name",        limit: 255, null: false
+    t.string   "post_names",      limit: 255
+    t.string   "key_name_suffix", limit: 255
+    t.string   "qualifications",  limit: 255
+    t.string   "post_titles",     limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
