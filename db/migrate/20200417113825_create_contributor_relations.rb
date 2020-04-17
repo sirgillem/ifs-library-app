@@ -4,9 +4,10 @@ class CreateContributorRelations < ActiveRecord::Migration
       t.references :contributable, polymorphic: true, index: true
       t.references :person, index: true
       t.string :role
-      t.integer :sequence
+      t.integer :sequence, null: false
 
       t.timestamps null: false
     end
     add_foreign_key :contributor_relations, :people
+  end
 end
