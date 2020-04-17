@@ -1,18 +1,12 @@
+<% provide :title, 'All People' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing People</h1>
+<h1>People</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Pre titles</th>
-      <th>Pre names</th>
-      <th>Key name prefix</th>
-      <th>Key name</th>
-      <th>Post names</th>
-      <th>Key name suffix</th>
-      <th>Qualifications</th>
-      <th>Post titles</th>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +14,7 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person.pre_titles %></td>
-        <td><%= person.pre_names %></td>
-        <td><%= person.key_name_prefix %></td>
-        <td><%= person.key_name %></td>
-        <td><%= person.post_names %></td>
-        <td><%= person.key_name_suffix %></td>
-        <td><%= person.qualifications %></td>
-        <td><%= person.post_titles %></td>
+        <td><%= person.full_name %></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

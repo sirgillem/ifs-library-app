@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  before_action :logged_in?
+  before_action :librarian?, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
@@ -70,5 +72,15 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:pre_titles, :pre_names, :key_name_prefix, :key_name, :post_names, :key_name_suffix, :qualifications, :post_titles)
+    end
+
+    # Check that a user is logged in before showing anything
+    def logged_in?
+      redirect_to '/' unless current_user
+    end
+
+    # Check if the current user is a librarian before modifying anything
+    def librarian?
+      redirect_to people_path unless current_user && current_user.librarian?
     end
 end
