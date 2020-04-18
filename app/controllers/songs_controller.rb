@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  include ContributableController
   before_action :logged_in?
   before_action except: [:index, :show] { librarian? songs_path }
   before_action :set_song, only: [:show, :edit, :update, :destroy]
@@ -84,10 +85,6 @@ class SongsController < ApplicationController
                                    :duration,
                                    :tempo,
                                    :purchased_at,
-                                   contributor_relations_attributes: [:id,
-                                                                      :person_id,
-                                                                      :role,
-                                                                      :sequence,
-                                                                      :_destroy])
+                                   *contributable_params)
     end
 end
