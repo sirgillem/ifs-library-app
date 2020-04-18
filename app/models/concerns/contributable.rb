@@ -3,6 +3,9 @@ module Contributable
 
   included do
     has_many :contributor_relations, as: :contributable, dependent: :destroy
+    accepts_nested_attributes_for :contributor_relations,
+                                  allow_destroy: true,
+                                  reject_if: :all_blank
   end
 
   # Add a contributor

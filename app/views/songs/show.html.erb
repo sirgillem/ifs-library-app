@@ -28,6 +28,12 @@
 <% end %>
 
 <p>
+  <% @song.contributor_relations.each do |contribution| %>
+    <%= contribution.full_text %><br/>
+  <% end %>
+</p>
+
+<p>
   <strong>Serial:</strong>
   <%= @song.serial %>
 </p>
