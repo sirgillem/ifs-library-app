@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :song_templates
   resources :song_parts
   resources :people
-  resources :contributor_relations, only: [:create, :destroy]
   scope '/admin' do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
