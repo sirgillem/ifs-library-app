@@ -1,7 +1,8 @@
 class ContributorRelation < ActiveRecord::Base
   default_scope -> { order(:sequence) }
   belongs_to :contributable, polymorphic: true
-  belongs_to :person
+  belongs_to :person, required: true
+  validates :sequence, numericality: { greater_than_or_equal_to: 0 }
 
   # Get a descriptive string for the relationship
   def full_text
