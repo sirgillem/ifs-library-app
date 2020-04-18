@@ -1,7 +1,7 @@
 # Control resources for publishers
 class PublishersController < ApplicationController
   before_action :logged_in?
-  before_action :librarian?, only: [:new, :create, :edit, :update, :destroy]
+  before_action except: [:index, :show] { librarian? publishers_path }
 
   def index
     @publishers = Publisher.all
@@ -46,16 +46,6 @@ class PublishersController < ApplicationController
   end
 
   private
-
-  # Check if the current user is a librarian before modifying anything
-  def librarian?
-    redirect_to publishers_path unless current_user && current_user.librarian?
-  end
-
-  # Check if user is logged in before displaying anyting
-  def logged_in?
-    redirect_to root_url unless current_user
-  end
 
   # Protected parameters
   def pub_params
