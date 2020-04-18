@@ -1,0 +1,2 @@
+module ContributorRelationsHelper
+end
