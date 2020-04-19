@@ -11,9 +11,7 @@ class newFields {
 		if(this.links.length === 0) return;
 		// Loop over each link on the page. A page could have multiple nested forms.
 		this.links.forEach((link)=>{
-		    link.addEventListener('click', (e) => {
-		        this.handleClick(link, e);
-		    });
+			link.addEventListener('click', this.handleClick);
 		});
 	}
 
