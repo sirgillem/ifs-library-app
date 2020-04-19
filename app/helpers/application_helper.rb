@@ -13,15 +13,7 @@ module ApplicationHelper
   # This method creates a link with `data-id` `data-fields` attributes. These
   # attributes are used to create new instances of the nested fields through
   # Javascript.
-  def link_to_add_fields(name, f, association)
-    # Takes an object (@person) and creates a new instance of its associated
-    # model (:addresses)
-    # To better understand, run the following in your terminal:
-    # rails c --sandbox
-    # @person = Person.new
-    # new_object = @person.send(:addresses).klass.new
-    new_object = f.object.send(association).klass.new
-
+  def link_to_nested_fields(name, f, association, new_object, button_class)
     # Saves the unique ID of the object into a variable.
     # This is needed to ensure the key of the associated array is unique. This
     # makes parsing the content in the `data-fields` attribute easier through
@@ -55,7 +47,30 @@ module ApplicationHelper
     # The `fields:` are rendered from the `fields` blocks.
     # We use `gsub("\n", "")` to remove anywhite space from the rendered partial
     # The `id:` value needs to match the value used in `child_index: id`.
-    link_to(name, '#', class: 'add_fields', data: { id: id,
-                                                    fields: fields.gsub('\n', '')})
+    link_to(name, '#', class: button_class,
+                       data: { id: id,
+                               fields: fields.gsub('\n', '') })
+  end
+
+  # Create the link to add a new set of fields for the 'many' side of a
+  # relation.
+  def link_to_add_fields(name, f, association)
+    # Takes an object (@person) and creates a new instance of its associated
+    # model (:addresses)
+    # To better understand, run the following in your terminal:
+    # rails c --sandbox
+    # @person = Person.new
+    # new_object = @person.send(:addresses).klass.new
+    new_object = f.object.send(association).klass.new
+
+    link_to_nested_fields(name, f, association, new_object, 'add_fields')
+  end
+
+  # Create the link to add a new set of fields for the 'one' side of a
+  # relation
+  def link_to_new_fields(name, f, association)
+    create_association = ['create', association].join('_')
+    new_object = f.object.send(create_association.to_sym)
+    link_to_nested_fields(name, f, association, new_object, 'new_fields')
   end
 end

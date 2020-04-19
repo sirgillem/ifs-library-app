@@ -1,9 +1,10 @@
 <div class="nested-fields">
   <%= f.hidden_field :_destroy %>
-  <div>
+  <div class="select-fields">
     <%= f.label :person_id %>
     <%= f.select :person_id, Person.all.collect { |p| [ p.full_name, p.id] },
                              { include_blank: true } %>
+    <%= link_to_new_fields 'New Person', f, :person %>
   </div>
   <div>
     <%= f.label :role %>
