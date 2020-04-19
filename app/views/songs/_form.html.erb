@@ -67,9 +67,9 @@
   <fieldset>
     <legend>Contributors:</legend>
     <%= f.fields_for :contributor_relations do |contributors_form| %>
-      <%= render 'contributor_relation_fields', f: contributors_form %>
+      <%= render 'shared/contributor_relation_fields', f: contributors_form %>
     <% end %>
-    <%= link_to_add_fields "Add Contributor", f, :contributor_relations %>
+    <%= link_to_add_fields "Add Contributor", f, :contributor_relations, 'shared' %>
   </fieldset>
 
   <div class="actions">
