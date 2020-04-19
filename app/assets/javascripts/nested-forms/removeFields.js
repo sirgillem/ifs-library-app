@@ -16,7 +16,8 @@ class removeFields {
 		});
 	}
 
-	handleClick(link, e) {
+	handleClick(e) {
+		let link = e.currentTarget;
 		// Stop the function from executing if a link or event were not passed into the function. 
 		if (!link || !e) return;
 		// Prevent the browser from following the URL.
