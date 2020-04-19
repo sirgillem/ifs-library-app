@@ -21,6 +21,9 @@
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
   </div>
+
+  <%= render 'shared/contributor_relation_fieldset', f: f %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

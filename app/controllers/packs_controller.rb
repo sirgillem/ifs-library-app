@@ -1,4 +1,5 @@
 class PacksController < ApplicationController
+  include ContributableController
   before_action :logged_in?
   before_action except: [:index, :show] { librarian? packs_path }
   before_action :set_pack, only: [:show, :edit, :update, :destroy]
@@ -71,6 +72,7 @@ class PacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pack_params
-      params.require(:pack).permit(:name, :publisher_id, :serial)
+      params.require(:pack).permit(:name, :publisher_id, :serial,
+                                   *contributable_params)
     end
 end
