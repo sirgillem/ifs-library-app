@@ -6,16 +6,19 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     # Ensure count of various models changes
     init_songs_count = Song.count
     init_contribs_count = ContributorRelation.count
+    init_people_count = Person.count
 
     sign_in users(:librarian)
     get new_song_path
     assert_response :success
     publisher_params = { name: "Goodwin's Goodies",
                          website: 'www.example.com' }
+    new_person_params = { pre_names: 'Johann Sebasitan',
+                          key_name: 'Bach' }
     contributor_params = { '0' => { person_id: people(:johndoe).id,
                                     role: 'Written and arranged',
                                     sequence: 0 },
-                           '1' => { person_id: people(:complexname).id,
+                           '1' => { person_attributes: new_person_params,
                                     role: 'Adapted',
                                     sequence: 1 } }
     song_params = { title: 'Running to the Bridge',
@@ -34,6 +37,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     post songs_path, song: song_params
     assert_equal init_songs_count + 1, Song.count
     assert_equal init_contribs_count + 2, ContributorRelation.count
+    assert_equal init_people_count + 1, Person.count
     follow_redirect!
     assert_template 'songs/show'
   end

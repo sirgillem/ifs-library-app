@@ -3,6 +3,8 @@ class ContributorRelation < ActiveRecord::Base
   belongs_to :contributable, polymorphic: true
   belongs_to :person, required: true
   validates :sequence, numericality: { greater_than_or_equal_to: 0 }
+  accepts_nested_attributes_for :person,
+                                reject_if: :all_blank
 
   # Get a descriptive string for the relationship
   def full_text
