@@ -62,15 +62,7 @@
     <%= f.date_select :purchased_at %>
   </div>
 
-  <%# Contributor relations. Adapted from https://stevepolito.design/blog/create-a-nested-form-in-rails-from-scratch/ %>
-
-  <fieldset>
-    <legend>Contributors:</legend>
-    <%= f.fields_for :contributor_relations do |contributors_form| %>
-      <%= render 'shared/contributor_relation_fields', f: contributors_form %>
-    <% end %>
-    <%= link_to_add_fields "Add Contributor", f, :contributor_relations, 'shared' %>
-  </fieldset>
+  <%= render 'shared/contributor_relation_fieldset', f: f %>
 
   <div class="actions">
     <%= f.submit %>
