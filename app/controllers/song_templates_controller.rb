@@ -71,6 +71,6 @@ class SongTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_template_params
-      params.require(:song_template).permit(:name)
+      params.require(:song_template).permit(:name, *song_part_params)
     end
 end
