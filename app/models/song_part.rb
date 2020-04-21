@@ -8,6 +8,7 @@ class SongPart < ActiveRecord::Base
       SongPart.table_name + '.name'
     )
   end
+  scope :sorted, -> { order(:sequence, :name) }
   belongs_to :song
   belongs_to :song_template
   validate :owner?
