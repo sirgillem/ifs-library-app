@@ -2,8 +2,11 @@ class Song < ActiveRecord::Base
   include Contributable
   belongs_to :publisher
   belongs_to :pack
-  has_many :song_parts, dependent: :destroy
+  has_many :song_parts, inverse_of: :song, dependent: :destroy
   accepts_nested_attributes_for :publisher, reject_if: :all_blank
+  accepts_nested_attributes_for :song_parts,
+                                allow_destroy: true,
+                                reject_if: :all_blank
   validate :publisher_valid?
   validates :title, presence: true
   validates :duration, numericality: { greater_than: 0 }, allow_nil: true

@@ -4,7 +4,8 @@ class SongPart < ActiveRecord::Base
       'song_id IS NULL',
       Song.table_name + '.title',
       SongTemplate.table_name + '.name',
-      'sequence', 'name'
+      SongPart.table_name + '.sequence',
+      SongPart.table_name + '.name'
     )
   end
   belongs_to :song
