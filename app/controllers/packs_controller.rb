@@ -73,6 +73,7 @@ class PacksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pack_params
       params.require(:pack).permit(:name, :publisher_id, :serial,
+                                   *publisher_params,
                                    *contributable_params)
     end
 end

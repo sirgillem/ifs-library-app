@@ -14,16 +14,16 @@
 <p>
   <strong>Publisher:</strong>
   <% if @song.publisher %>
-    <%= link_to @song.publisher %>
+    <%= link_to @song.publisher, @song.publisher %>
   <% else %>
-    <%= link_to @song.pack.publisher %>
+    <%= link_to @song.pack.publisher, @song.pack.publisher %>
   <% end %>
 </p>
 
 <% if @song.pack %>
   <p>
     <strong>Pack:</strong>
-    <%= link_to @song.pack %>
+    <%= link_to @song.pack, @song.pack %>
   </p>
 <% end %>
 

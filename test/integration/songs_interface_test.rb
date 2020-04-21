@@ -7,6 +7,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     init_songs_count = Song.count
     init_contribs_count = ContributorRelation.count
     init_people_count = Person.count
+    init_publisher_count = Publisher.count
 
     sign_in users(:librarian)
     get new_song_path
@@ -23,7 +24,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
                                     sequence: 1 } }
     song_params = { title: 'Running to the Bridge',
                     label: '226',
-                    publisher_id: publishers(:pub1).id,
+                    publisher_attributes: publisher_params,
                     contributor_relations_attributes: contributor_params,
                     serial: '1234',
                     details: "as recorded on the album 'That's How We Roll'",
@@ -38,6 +39,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     assert_equal init_songs_count + 1, Song.count
     assert_equal init_contribs_count + 2, ContributorRelation.count
     assert_equal init_people_count + 1, Person.count
+    assert_equal init_publisher_count + 1, Publisher.count
     follow_redirect!
     assert_template 'songs/show'
   end

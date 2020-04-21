@@ -7,6 +7,7 @@ class PacksInterfaceTestTest < ActionDispatch::IntegrationTest
     init_packs_count = Pack.count
     init_contribs_count = ContributorRelation.count
     init_people_count = Person.count
+    init_publisher_count = Publisher.count
 
     sign_in users(:librarian)
     get new_pack_path
@@ -22,13 +23,14 @@ class PacksInterfaceTestTest < ActionDispatch::IntegrationTest
                                     role: 'Adapted',
                                     sequence: 1 } }
     pack_params = { name: 'Easy Jazz Pack #5',
-                    publisher_id: publishers(:pub1).id,
+                    publisher_attributes: publisher_params,
                     contributor_relations_attributes: contributor_params,
                     serial: '1234' }
     post packs_path, pack: pack_params
     assert_equal init_packs_count + 1, Pack.count
     assert_equal init_contribs_count + 2, ContributorRelation.count
     assert_equal init_people_count + 1, Person.count
+    assert_equal init_publisher_count + 1, Publisher.count
     follow_redirect!
     assert_template 'packs/show'
   end

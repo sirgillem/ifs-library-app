@@ -15,8 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <%= render partial: 'publishers/publisher_select', locals: { f: f,
-                                                               include_blank: false } %>
+  <div class="select-fields">
+    <%= render partial: 'publishers/publisher_select', locals: { f: f,
+                                                                 include_blank: true } %>
+    <%= link_to_new_fields 'New Publisher', f, :publisher, 'shared' %>
+  </div>
   <div class="field">
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>

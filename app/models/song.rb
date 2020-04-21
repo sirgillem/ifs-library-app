@@ -3,6 +3,7 @@ class Song < ActiveRecord::Base
   belongs_to :publisher
   belongs_to :pack
   has_many :song_parts, dependent: :destroy
+  accepts_nested_attributes_for :publisher, reject_if: :all_blank
   validate :publisher_valid?
   validates :title, presence: true
   validates :duration, numericality: { greater_than: 0 }, allow_nil: true

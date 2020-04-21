@@ -85,6 +85,7 @@ class SongsController < ApplicationController
                                    :duration,
                                    :tempo,
                                    :purchased_at,
+                                   *publisher_params,
                                    *contributable_params)
     end
 end

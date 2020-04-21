@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Provide the parameters for a nested publisher form
+  def publisher_params
+    [publisher_attributes: [:id, :name, :website]]
+  end
+
   private
 
     # Check that a user is logged in before showing anything

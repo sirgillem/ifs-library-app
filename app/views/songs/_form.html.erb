@@ -19,8 +19,11 @@
     <%= f.label :label %><br>
     <%= f.text_field :label %>
   </div>
-  <%= render partial: 'publishers/publisher_select', locals: { f: f,
-                                                               include_blank: true } %>
+  <div class="select-fields">
+    <%= render partial: 'publishers/publisher_select', locals: { f: f,
+                                                                 include_blank: true } %>
+    <%= link_to_new_fields 'New Publisher', f, :publisher, 'shared' %>
+  </div>
   <div class="field">
     <%= f.label :pack_id %><br>
     <%= f.select :pack_id, Pack.all.collect { |p| [ p.name, p.id] }, { include_blank: true } %>
