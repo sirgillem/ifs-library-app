@@ -6,7 +6,7 @@ class SongPartsController < ApplicationController
   # GET /song_parts
   # GET /song_parts.json
   def index
-    @song_parts = SongPart.all
+    @song_parts = SongPart.all_parts
   end
 
   # GET /song_parts/1
@@ -71,6 +71,11 @@ class SongPartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_part_params
-      params.require(:song_part).permit(:song_id, :name, :scanned, :notes, :song_template_id)
+      params.require(:song_part).permit(:song_id,
+                                        :name,
+                                        :scanned,
+                                        :notes,
+                                        :song_template_id,
+                                        :sequence)
     end
 end

@@ -95,10 +95,16 @@ class SongPartsControllerTest < ActionController::TestCase
   test 'should update song_part as librarian' do
     sign_in @librarian
     @song_part_params[:name] = 'New name'
+    @song_part_params[:notes] = 'It is a truth, universally acknowledged'
+    @song_part_params[:scanned] = !@song_part_params[:scanned]
+    @song_part_params[:sequence] = @song_part_params[:sequence] + 1
     patch :update, id: @song_part, song_part: @song_part_params
     assert_redirected_to song_part_path(assigns(:song_part))
     @song_part.reload
     assert_equal 'New name', @song_part.name
+    assert_equal @song_part_params[:notes], @song_part.notes
+    assert_equal @song_part_params[:scanned], @song_part.scanned
+    assert_equal @song_part_params[:sequence], @song_part.sequence
   end
 
   test 'should not update song_part as non-librarian' do

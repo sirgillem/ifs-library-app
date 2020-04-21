@@ -1,6 +1,11 @@
 class SongPart < ActiveRecord::Base
-  default_scope do
-    order(:sequence, :name)
+  scope :all_parts, -> do
+    includes(:song, :song_template).order(
+      'song_id IS NULL',
+      Song.table_name + '.title',
+      SongTemplate.table_name + '.name',
+      'sequence', 'name'
+    )
   end
   belongs_to :song
   belongs_to :song_template
