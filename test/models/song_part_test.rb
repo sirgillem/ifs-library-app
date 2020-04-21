@@ -19,4 +19,13 @@ class SongPartTest < ActiveSupport::TestCase
     p.song = songs(:opus_one)
     assert_not p.valid?
   end
+
+  test 'song part must have a non-negative sequence number' do
+    p = SongPart.new(name: 'Bass', song_id: Song.first.id, sequence: nil)
+    assert_not p.valid?
+    p.sequence = 0
+    assert p.valid?
+    p.sequence = -1
+    assert_not p.valid?
+  end
 end

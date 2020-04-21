@@ -3,10 +3,14 @@ opus_one_tenor1:
   name: Tenor 1
   scanned: true
   notes: No solo
+  sequence: 0
 
 <% parts = ['alto1','alto2','tenor1','tenor2','bari'] %>
+<% n = 0 %>
 <% parts.each do |part| %>
 templ_<%= part %>:
   name: <%= part %>
   song_template: bigband
+  sequence: <%= n %>
+  <% n += 1 %>
 <% end %>

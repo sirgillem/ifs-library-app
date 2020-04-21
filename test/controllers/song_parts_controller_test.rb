@@ -10,6 +10,7 @@ class SongPartsControllerTest < ActionController::TestCase
     @song_part_params = { name: @song_part.name,
                           scanned: @song_part.scanned,
                           notes: @song_part.notes,
+                          sequence: @song_part.sequence,
                           song_id: @song_part.song_id }
   end
 
