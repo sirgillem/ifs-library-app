@@ -71,3 +71,15 @@ a.invite {
         font-weight: bold;
 	font-size: 16px;
 }
+
+/* forms */
+
+div.nested-fields {
+	div {
+		display:inline-block;
+	}
+}
+
+fieldset {
+	padding-bottom: 15px;
+}
