@@ -87,13 +87,6 @@ class SongsController < ApplicationController
                                    :purchased_at,
                                    *publisher_params,
                                    *contributable_params,
-                                   song_parts_attributes: [
-                                     :id,
-                                     :name,
-                                     :scanned,
-                                     :notes,
-                                     :sequence,
-                                     :_destroy
-                                   ])
+                                   *song_part_params)
     end
 end

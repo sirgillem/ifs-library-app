@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
     [publisher_attributes: [:id, :name, :website]]
   end
 
+  # Provide the parameters for a nested song part form
+  def song_part_params
+    [song_parts_attributes: [:id, :name, :scanned, :notes, :sequence, :_destroy]]
+  end
+
   private
 
     # Check that a user is logged in before showing anything

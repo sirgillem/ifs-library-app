@@ -1,0 +1,22 @@
+<div class="nested-fields">
+  <%= f.hidden_field :_destroy %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :scanned %>
+    <%= f.check_box :scanned %>
+  </div>
+  <div>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+  <div>
+    <%= f.label :sequence %>
+    <%= f.number_field :sequence %>
+  </div>
+  <div>
+    <%= link_to "Remove", '#', class: 'remove_fields' %>
+  </div>
+</div>
