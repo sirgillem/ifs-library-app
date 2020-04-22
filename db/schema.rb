@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200421102611) do
+ActiveRecord::Schema.define(version: 20200422081012) do
 
   create_table "contributor_relations", force: :cascade do |t|
     t.integer  "contributable_id",   limit: 4
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20200421102611) do
 
   add_index "contributor_relations", ["contributable_type", "contributable_id"], name: "index_library_contributor_relations_on_contributable", using: :btree
   add_index "contributor_relations", ["person_id"], name: "index_library_contributor_relations_on_person_id", using: :btree
+
+  create_table "instrument_sections", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "sequence",   limit: 4,   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "packs", force: :cascade do |t|
     t.string   "name",         limit: 255, null: false
