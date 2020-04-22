@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Instrument Sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sequence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instrument_sections.each do |instrument_section| %>
+      <tr>
+        <td><%= instrument_section.name %></td>
+        <td><%= instrument_section.sequence %></td>
+        <td><%= link_to 'Show', instrument_section %></td>
+        <td><%= link_to 'Edit', edit_instrument_section_path(instrument_section) %></td>
+        <td><%= link_to 'Destroy', instrument_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instrument section', new_instrument_section_path %>
