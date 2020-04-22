@@ -1,9 +1,23 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+alto_sax:
+  name: alto saxophone
+  section: sax
 
-one:
-  name: MyText
-  instrument_section_id: 
+tenor_sax:
+  name: tenor saxophone
+  section: sax
 
-two:
-  name: MyText
-  instrument_section_id: 
+trombone:
+  name: trombone
+  section: trombone
+
+bass_trombone:
+  name: bass trombone
+  section: trombone
+
+trumpet:
+  name: trumpet
+  section: trumpet
+
+drum_kit:
+  name: drum kit
+  section: rhythm
