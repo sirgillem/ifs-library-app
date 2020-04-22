@@ -11,6 +11,7 @@ class SongPart < ActiveRecord::Base
   scope :sorted, -> { order(:sequence, :name) }
   belongs_to :song
   belongs_to :song_template
+  has_many :part_instruments, dependent: :destroy
   has_many :instruments, through: :part_instruments
   validate :owner?
   validates :name, presence: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200422084115) do
+ActiveRecord::Schema.define(version: 20200422095153) do
 
   create_table "contributor_relations", force: :cascade do |t|
     t.integer  "contributable_id",   limit: 4
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20200422084115) do
   end
 
   add_index "packs", ["publisher_id"], name: "index_library_packs_on_publisher_id", using: :btree
+
+  create_table "part_instruments", force: :cascade do |t|
+    t.integer  "song_part_id",  limit: 4, null: false
+    t.integer  "instrument_id", limit: 4, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "part_instruments", ["instrument_id"], name: "index_library_part_instruments_on_instrument_id", using: :btree
+  add_index "part_instruments", ["song_part_id"], name: "index_library_part_instruments_on_song_part_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "pre_titles",      limit: 255
@@ -150,6 +160,8 @@ ActiveRecord::Schema.define(version: 20200422084115) do
   add_foreign_key "contributor_relations", "people"
   add_foreign_key "instruments", "instrument_sections", column: "section_id"
   add_foreign_key "packs", "publishers"
+  add_foreign_key "part_instruments", "instruments"
+  add_foreign_key "part_instruments", "song_parts"
   add_foreign_key "song_parts", "song_templates"
   add_foreign_key "song_parts", "songs"
   add_foreign_key "songs", "packs"
