@@ -10,7 +10,17 @@ class ApplicationController < ActionController::Base
 
   # Provide the parameters for a nested song part form
   def song_part_params
-    [song_parts_attributes: [:id, :name, :scanned, :notes, :sequence, :_destroy]]
+    [song_parts_attributes: [:id,
+                             :name,
+                             :scanned,
+                             :notes,
+                             :sequence,
+                             :_destroy,
+                             part_instruments_attributes: [
+                               :id,
+                               :instrument_id,
+                               :_destroy
+                             ]]]
   end
 
   private

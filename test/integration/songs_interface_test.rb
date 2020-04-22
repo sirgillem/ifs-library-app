@@ -9,6 +9,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     init_people_count = Person.count
     init_publisher_count = Publisher.count
     init_part_count = SongPart.count
+    init_part_instruments_count = PartInstrument.count
 
     sign_in users(:librarian)
     get new_song_path
@@ -26,6 +27,14 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     part_params = { '0' => { name: 'Alto 1',
                              scanned: false,
                              notes: 'Solo bars 32-64',
+                             part_instruments_attributes: {
+                               '0' => {
+                                 instrument_id: Instrument.first.id
+                               },
+                               '1' => {
+                                 instrument_id: Instrument.last.id
+                               }
+                             },
                              sequence: 0 },
                     '1' => { name: 'Alto 2',
                              sequence: 1 } }
@@ -49,6 +58,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     assert_equal init_people_count + 1, Person.count
     assert_equal init_publisher_count + 1, Publisher.count
     assert_equal init_part_count + 2, SongPart.count
+    assert_equal init_part_instruments_count + 2, PartInstrument.count
     follow_redirect!
     assert_template 'songs/show'
   end

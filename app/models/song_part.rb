@@ -11,8 +11,11 @@ class SongPart < ActiveRecord::Base
   scope :sorted, -> { order(:sequence, :name) }
   belongs_to :song
   belongs_to :song_template
-  has_many :part_instruments, dependent: :destroy
+  has_many :part_instruments, inverse_of: :song_part, dependent: :destroy
   has_many :instruments, through: :part_instruments
+  accepts_nested_attributes_for :part_instruments,
+                                allow_destroy: true,
+                                reject_if: :all_blank
   validate :owner?
   validates :name, presence: true
   validates :sequence, numericality: { greater_than_or_equal_to: 0 }
