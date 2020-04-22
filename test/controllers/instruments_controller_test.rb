@@ -45,6 +45,9 @@ class InstrumentsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to instrument_path(assigns(:instrument))
+    new = assigns(:instrument)
+    assert_equal 'Ethel', new.name
+    assert_equal instrument_sections(:trombone).id, new.section_id
   end
 
   test 'should not create instrument as non-librarian' do
