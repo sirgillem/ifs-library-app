@@ -16,8 +16,8 @@
     <%= f.text_area :name %>
   </div>
   <div class="field">
-    <%= f.label :instrument_section_id %><br>
-    <%= f.text_field :instrument_section_id %>
+    <%= f.label :section_id %><br>
+    <%= f.select :section_id, InstrumentSection.all.collect { |p| [ p.name, p.id] }, { include_blank: include_blank } %>
   </div>
   <div class="actions">
     <%= f.submit %>
