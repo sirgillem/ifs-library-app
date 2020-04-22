@@ -1,5 +1,10 @@
+<% part_instruments = [] %>
+<% song_part.instruments.each do |i| %>
+  <% part_instruments << i.name %>
+<% end %>
 <tr>
   <td><%= link_to song_part.name, song_part %></td>
+  <td><%= part_instruments.join(', ') %></td>
   <td><%= 'Yes' if song_part.scanned? %></td>
   <td><%= song_part.notes %></td>
 </tr>
