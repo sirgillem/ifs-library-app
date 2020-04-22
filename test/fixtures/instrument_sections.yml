@@ -1,9 +1,23 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
+sax:
+  name: Saxophones
   sequence: 1
 
-two:
-  name: MyString
-  sequence: 1
+trombone:
+  name: Trombones
+  sequence: 2
+
+trumpet:
+  name: Trumpets
+  sequence: 3
+
+rhythm:
+  name: Rhythm
+  sequence: 4
+
+vocal:
+  name: Vocals
+  sequence: 5
+
+conductor:
+  name: Conductor
+  sequence: 0
