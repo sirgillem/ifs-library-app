@@ -17,9 +17,7 @@
       <tr>
         <td><%= instrument_section.name %></td>
         <td><%= instrument_section.sequence %></td>
-        <td><%= link_to 'Show', instrument_section %></td>
-        <td><%= link_to 'Edit', edit_instrument_section_path(instrument_section) %></td>
-        <td><%= link_to 'Destroy', instrument_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'shared/index_actions', resource: instrument_section %>
       </tr>
     <% end %>
   </tbody>

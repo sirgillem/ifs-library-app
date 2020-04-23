@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   include ContributableController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? songs_path }
+  before_action except: [:index, :show] { page_check_librarian songs_path }
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   # GET /songs

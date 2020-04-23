@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? people_path }
+  before_action except: [:index, :show] { page_check_librarian people_path }
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people

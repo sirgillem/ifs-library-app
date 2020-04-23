@@ -1,7 +1,7 @@
 class PacksController < ApplicationController
   include ContributableController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? packs_path }
+  before_action except: [:index, :show] { page_check_librarian packs_path }
   before_action :set_pack, only: [:show, :edit, :update, :destroy]
 
   # GET /packs

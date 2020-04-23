@@ -1,6 +1,6 @@
 class SongPartsController < ApplicationController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? song_parts_path }
+  before_action except: [:index, :show] { page_check_librarian song_parts_path }
   before_action :set_song_part, only: [:show, :edit, :update, :destroy]
 
   # GET /song_parts

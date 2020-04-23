@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Share authorisation methods with view helpers
+  helper_method :librarian?
+
   # Provide the parameters for a nested publisher form
   def publisher_params
     [publisher_attributes: [:id, :name, :website]]
@@ -23,6 +26,10 @@ class ApplicationController < ActionController::Base
                              ]]]
   end
 
+  def librarian?
+    current_user && current_user.librarian?
+  end
+
   private
 
     # Check that a user is logged in before showing anything
@@ -31,7 +38,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Check if the current user is a librarian before modifying anything
-    def librarian?(redirect = root_path)
+    def page_check_librarian(redirect = root_path)
       redirect_to redirect unless current_user && current_user.librarian?
     end
 end

@@ -1,7 +1,7 @@
 # Control resources for publishers
 class PublishersController < ApplicationController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? publishers_path }
+  before_action except: [:index, :show] { page_check_librarian publishers_path }
 
   def index
     @publishers = Publisher.all

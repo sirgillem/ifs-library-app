@@ -1,6 +1,6 @@
 class InstrumentsController < ApplicationController
   before_action :logged_in?
-  before_action except: [:index, :show] { librarian? instruments_path }
+  before_action except: [:index, :show] { page_check_librarian instruments_path }
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
   # GET /instruments
