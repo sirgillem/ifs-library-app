@@ -1,0 +1,5 @@
+<td><%= link_to 'Show', resource %></td>
+<% if librarian? %>
+  <td><%= link_to 'Edit', [:edit, resource] %></td>
+  <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
