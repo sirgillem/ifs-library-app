@@ -29,8 +29,11 @@ class addFields {
 		let regexp = linkId ? new RegExp(linkId, 'g') : null ;
 		// Replace all instances of the `new_object.object_id` with `time`, and save markup into a variable if there's a value in `regexp`.
 		let formFields = regexp ? link.dataset.fields.replace(regexp, time) : null ;
+		// Find the targe element. If none is found, use the link directly.
+		let targetElem = link.closest('.add_fields_container');
+		targetElem = targetElem ? targetElem : link;
 		// Add the new markup to the form if there are fields to add.
-		formFields ? link.insertAdjacentHTML('beforebegin', formFields) : null ;
+		formFields ? targetElem.insertAdjacentHTML('beforebegin', formFields) : null ;
 		
 		// Create event listeners for any links contained in the nested form
 		new addFields();
