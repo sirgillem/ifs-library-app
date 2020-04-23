@@ -39,6 +39,6 @@ class ApplicationController < ActionController::Base
 
     # Check if the current user is a librarian before modifying anything
     def page_check_librarian(redirect = root_path)
-      redirect_to redirect unless current_user && current_user.librarian?
+      redirect_to redirect unless librarian?
     end
 end
