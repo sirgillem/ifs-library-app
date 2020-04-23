@@ -5,9 +5,15 @@
     <%= f.label :role, :by %>
   </div>
   <div class="select-fields">
-    <%= f.select :person_id, Person.all.collect { |p| [ p.full_name, p.id] },
-                             { include_blank: true } %>
-    <%= link_to_new_fields 'New Person', f, :person, 'shared' %>
+    <% if f.object.person && f.object.person.new_record? %>
+      <%= f.fields_for :person do |person_form| %>
+        <%= render 'shared/person_fields', f: person_form %>
+      <% end %>
+    <% else %>
+      <%= f.select :person_id, Person.all.collect { |p| [ p.full_name, p.id] },
+                               { include_blank: true } %>
+      <%= link_to_new_fields 'New Person', f, :person, 'shared' %>
+    <% end %>
   </div>
   <div>
     <%= f.label :sequence %>
