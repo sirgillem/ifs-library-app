@@ -11,5 +11,5 @@
   <%= @instrument_section.sequence %>
 </p>
 
-<%= link_to 'Edit', edit_instrument_section_path(@instrument_section) %> |
+<%= render 'shared/show_actions', resource: @instrument_section %>
 <%= link_to 'Back', instrument_sections_path %>
