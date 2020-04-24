@@ -6,7 +6,11 @@ class InstrumentsController < ApplicationController
   # GET /instruments
   # GET /instruments.json
   def index
-    @instruments = Instrument.all
+    @instruments = Instrument.includes(:section).order(
+      InstrumentSection.table_name + '.sequence',
+      InstrumentSection.table_name + '.name',
+      Instrument.table_name + '.name'
+    )
   end
 
   # GET /instruments/1
