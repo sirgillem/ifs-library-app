@@ -16,9 +16,15 @@
     <%= f.text_field :name %>
   </div>
   <div class="select-fields">
-    <%= render partial: 'publishers/publisher_select', locals: { f: f,
-                                                                 include_blank: true } %>
-    <%= link_to_new_fields 'New Publisher', f, :publisher, 'shared' %>
+    <% if @pack.publisher && @pack.publisher.new_record? %>
+      <%= f.fields_for :publisher do |publisher_form| %>
+        <%= render 'shared/publisher_fields', f: publisher_form %>
+      <% end %>
+    <% else %> 
+      <%= render partial: 'publishers/publisher_select', locals: { f: f,
+                                                                   include_blank: true } %>
+      <%= link_to_new_fields 'New Publisher', f, :publisher, 'shared' %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :serial %><br>

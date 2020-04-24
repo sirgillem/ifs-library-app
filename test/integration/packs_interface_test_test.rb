@@ -34,4 +34,27 @@ class PacksInterfaceTestTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'packs/show'
   end
+
+  test 'If pack form is invalid, nested form new items refill' do
+    sign_in users(:librarian)
+    get new_pack_path
+    publisher_params = { name: 'Foobar',
+                         website: 'www.foobar.com' }
+    new_person_params = { key_name: 'Suetonius' }
+    contributor_params = { '0' => { person_id: people(:johndoe).id,
+                                    role: 'Taken',
+                                    sequence: 0 },
+                           '1' => { person_attributes: new_person_params,
+                                    role: 'Received',
+                                    sequence: 1 } }
+    pack_params = { name: '  ',
+                    publisher_attributes: publisher_params,
+                    contributor_relations_attributes: contributor_params,
+                    serial: 'SERIAL' }
+    post packs_path, pack: pack_params
+    assert_template 'packs/new'
+    assert_match /Foobar/, response.body
+    assert_match /Taken/, response.body
+    assert_match /Suetonius/, response.body
+  end
 end
