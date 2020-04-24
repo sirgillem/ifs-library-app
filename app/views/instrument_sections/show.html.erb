@@ -1,13 +1,20 @@
 <% provide :title, @instrument_section %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @instrument_section.name %>
-</p>
+<h1>Section: <%= @instrument_section.name %></h1>
 
 <p>
-  <strong>Sequence:</strong>
+  This section has the following instruments:
+</p>
+
+<ul>
+  <% @instrument_section.instruments.order(:name).each do |inst| %>
+    <li><%= inst.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  <strong>Sort order (among other sections):</strong>
   <%= @instrument_section.sequence %>
 </p>
 
