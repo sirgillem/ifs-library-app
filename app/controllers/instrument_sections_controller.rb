@@ -6,7 +6,7 @@ class InstrumentSectionsController < ApplicationController
   # GET /instrument_sections
   # GET /instrument_sections.json
   def index
-    @instrument_sections = InstrumentSection.all
+    @instrument_sections = InstrumentSection.order(:sequence,:name)
   end
 
   # GET /instrument_sections/1
