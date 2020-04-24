@@ -15,7 +15,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="select-fields">
+  <div class="field select-fields">
     <% if @pack.publisher && @pack.publisher.new_record? %>
       <%= f.fields_for :publisher do |publisher_form| %>
         <%= render 'shared/publisher_fields', f: publisher_form %>
