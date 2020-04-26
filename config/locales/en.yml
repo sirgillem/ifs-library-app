@@ -10,3 +10,7 @@ en:
     key_name_suffix: 'Suffix'
     qualifications: 'Qualifications'
     post_titles: 'Titles after name'
+    notes_perf: 'Performance notes'
+    notes_lib: 'Librarian notes'
+    recording: 'Link to recording'
+    tempo: 'Tempo (bpm)'
