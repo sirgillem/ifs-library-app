@@ -13,11 +13,31 @@ class PublishersControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
-  test 'should get index when logged in' do
-    sign_in @user
+  test 'should get index without edit buttons when logged in' do
+    sign_in @limited_admin
     get :index
     assert_response :success
-    assert_select 'title', text: full_title('All Publishers')
+    objects = assigns(:publishers)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_publisher_path(object), count: 0
+      assert_select 'a[href=?]', publisher_path(object),
+                    text: 'Destroy',
+                    count: 0
+    end
+  end
+
+  test 'should get index with edit buttons when librarian' do
+    sign_in @librarian
+    get :index
+    assert_response :success
+    objects = assigns(:publishers)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_publisher_path(object)
+      assert_select 'a[href=?]', publisher_path(object),
+                    text: 'Destroy'
+    end
   end
 
   test 'should not get new as non-librarian' do

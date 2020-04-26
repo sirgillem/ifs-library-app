@@ -8,11 +8,31 @@ class PacksControllerTest < ActionController::TestCase
     @charles = users(:limited_admin)
   end
 
-  test 'should get index when logged in' do
+  test 'should get index without edit buttons when logged in' do
     sign_in @charles
     get :index
     assert_response :success
-    assert_not_nil assigns(:packs)
+    objects = assigns(:packs)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_pack_path(object), count: 0
+      assert_select 'a[href=?]', pack_path(object),
+                    text: 'Destroy',
+                    count: 0
+    end
+  end
+
+  test 'should get index with edit buttons when librarian' do
+    sign_in @librarian
+    get :index
+    assert_response :success
+    objects = assigns(:packs)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_pack_path(object)
+      assert_select 'a[href=?]', pack_path(object),
+                    text: 'Destroy'
+    end
   end
 
   test 'should redirect index when not logged in' do

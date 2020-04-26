@@ -19,11 +19,31 @@ class SongPartsControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
-  test 'should get index when logged in' do
+  test 'should get index without edit buttons when logged in' do
     sign_in @charles
     get :index
     assert_response :success
-    assert_not_nil assigns(:song_parts)
+    objects = assigns(:song_parts)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_song_part_path(object), count: 0
+      assert_select 'a[href=?]', song_part_path(object),
+                    text: 'Destroy',
+                    count: 0
+    end
+  end
+
+  test 'should get index with edit buttons when librarian' do
+    sign_in @librarian
+    get :index
+    assert_response :success
+    objects = assigns(:song_parts)
+    assert_not_nil objects
+    objects.each do |object|
+      assert_select 'a[href=?]', edit_song_part_path(object)
+      assert_select 'a[href=?]', song_part_path(object),
+                    text: 'Destroy'
+    end
   end
 
   test 'should not get new as non-librarian' do
