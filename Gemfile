@@ -22,6 +22,9 @@ gem 'devise'
 # Invite users through email
 gem 'devise_invitable', '1.7.5'
 
+# A select form input which allows search
+gem 'select2-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

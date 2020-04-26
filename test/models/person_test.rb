@@ -22,14 +22,14 @@ class PersonTest < ActiveSupport::TestCase
 
   test 'All fields of a name are included in sort name in correct order' do
     p = Person.new(pre_titles: '5',
-                   pre_names: '2',
-                   key_name_prefix: '3',
+                   pre_names: '3',
+                   key_name_prefix: '4',
                    key_name: '1',
-                   post_names: '4',
+                   post_names: '2',
                    key_name_suffix: '6',
                    qualifications: '7',
                    post_titles: '8')
-    assert_equal '1, 2, 3, 4, 5, 6, 7, 8', p.sort_name
+    assert_equal '1 2, 3 4, 5, 6, 7, 8', p.sort_name
   end
 
   test 'full name ignores nil fields' do
