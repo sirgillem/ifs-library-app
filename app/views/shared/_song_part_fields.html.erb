@@ -4,13 +4,13 @@
     <%= f.text_field :name %>
   </td>
   <td>
-    <%= f.text_area :notes %>
-  </td>
-  <td>
     <%= f.fields_for :part_instruments do |instruments_form| %>
       <%= render 'shared/part_instrument_fields', f: instruments_form %>
     <% end %>
     <%= link_to_add_fields "Add Instrument", f, :part_instruments, 'shared' %>
+  </td>
+  <td>
+    <%= f.text_area :notes, rows: 1 %>
   </td>
   <td>
     <%= f.check_box :scanned %>
