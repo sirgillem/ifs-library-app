@@ -1,22 +1,7 @@
 <% provide :title, 'Edit publisher' %>
-<h1> Edit <%= @publisher.name %></h1>
+<h1>Editing Publisher</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for @publisher, url: {action: 'update'} do |f| %>
-      <%= render 'devise/shared/error_messages', resource: @publisher %>
+<%= render 'form' %>
 
-      <div class="field">
-        <%= f.label :name %><br/>
-        <%= f.text_field :name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :website %><br/>
-        <%= f.text_field :website %>
-      </div> 
-
-      <%= f.submit 'Update' %>
-    <% end %>
-  </div>
-</div>
+<%= link_to 'Show', @publisher %> | 
+<%= link_to 'Back', publishers_path %>

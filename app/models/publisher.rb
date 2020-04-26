@@ -13,6 +13,15 @@ class Publisher < ActiveRecord::Base
     end
   end
 
+  # Get the count of all songs by this publisher.
+  def songs_count
+    value = 0
+    packs.each do |pack|
+      value += pack.songs.count
+    end
+    value += songs.count
+  end
+
   def to_s
     name
   end

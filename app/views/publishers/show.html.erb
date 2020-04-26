@@ -3,3 +3,32 @@
 <h1><%= @publisher.name %></h1>
 
 <%= link_to @publisher.website, @publisher.full_url %>
+
+<h2>Songs:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pack</th>
+      <th>Song</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @publisher.packs.each do |pack| %>
+      <% pack.songs.each do |song| %>
+        <tr>
+          <td><%= link_to pack, pack %></td>
+          <td><%= link_to song, song %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% @publisher.songs.each do |song| %>
+      <tr>
+        <td/>
+        <td><%= link_to song, song %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', publishers_path %>
