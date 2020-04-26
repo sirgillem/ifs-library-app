@@ -13,7 +13,7 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person.full_name %></td>
+        <td><%= person.sort_name %></td>
         <%= render 'shared/index_actions', resource: person %>
       </tr>
     <% end %>

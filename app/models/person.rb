@@ -17,8 +17,10 @@ class Person < ActiveRecord::Base
   # Get the sorting key of the person. Note that this is only used for display:
   # update the order expression in default_scope to adjust the actual sorting.
   def sort_name
-    ordered_names = [key_name, pre_names, key_name_prefix, post_names,
-                     pre_titles, key_name_suffix, qualifications, post_titles]
+    key_part = [key_name, post_names].reject(&:blank?).join(' ')
+    given_part = [pre_names, key_name_prefix].reject(&:blank?).join(' ')
+    ordered_names = [key_part, given_part, pre_titles, key_name_suffix,
+                     qualifications, post_titles]
     ordered_names.reject(&:blank?).join(', ')
   end
 
