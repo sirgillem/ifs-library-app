@@ -20,6 +20,13 @@ class SongPart < ActiveRecord::Base
   validates :name, presence: true
   validates :sequence, numericality: { greater_than_or_equal_to: 0 }
 
+  # Get the display list of instruments in the part
+  def instrument_sig
+    inst_list = []
+    instruments.each { |i| inst_list << i.name }
+    inst_list.join(', ')
+  end
+
   # A part must belong to either a song or a song template
   def owner?
     if song && song_template

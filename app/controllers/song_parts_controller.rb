@@ -76,6 +76,11 @@ class SongPartsController < ApplicationController
                                         :scanned,
                                         :notes,
                                         :song_template_id,
-                                        :sequence)
+                                        :sequence,
+                                        part_instruments_attributes: [
+                                          :id,
+                                          :instrument_id,
+                                          :_destroy
+                                        ])
     end
 end

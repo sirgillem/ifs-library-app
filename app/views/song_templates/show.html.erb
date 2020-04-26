@@ -1,9 +1,6 @@
 <% provide :title, @song_template %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @song_template.name %>
-</p>
+<h1>Template: <%= @song_template.name %>
 
 <%= render 'song_parts/member_list', resource: @song_template %>
 

@@ -3,12 +3,12 @@
 <% if @song_part.song %>
   <p>
     <strong>Song:</strong>
-    <%= @song_part.song %>
+    <%= link_to @song_part.song, @song_part.song %>
   </p>
 <% else %>
   <p>
     <strong>Template:</strong>
-    <%= @song_part.song_template %>
+    <%= link_to @song_part.song_template, @song_part.song_template %>
   </p>
 <% end %>
 
@@ -18,13 +18,18 @@
 </p>
 
 <p>
+  <strong>Notes:</strong>
+  <%= @song_part.notes %>
+</p>
+
+<p>
   <strong>Scanned:</strong>
   <%= @song_part.scanned %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
-  <%= @song_part.notes %>
+  <strong>Instruments:</strong>
+  <%= @song_part.instrument_sig %>
 </p>
 
 <%= link_to 'Edit', edit_song_part_path(@song_part) %> |

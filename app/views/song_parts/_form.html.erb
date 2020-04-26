@@ -33,8 +33,17 @@
   </div>
   <div class="field">
     <%= f.label :sequence %>
-    <%= f.number_field :sequence %>
+    <%= f.number_field :sequence, size: 4 %>
   </div>
+
+  <fieldset>
+    <h2>Instruments</h2>
+    <%= f.fields_for :part_instruments do |instruments_form| %>
+      <%= render 'shared/part_instrument_fields', f: instruments_form %>
+    <% end %>
+    <%= link_to_add_fields "Add Instrument", f, :part_instruments, 'shared' %>
+  </fieldset>
+
   <div class="actions">
     <%= f.submit %>
   </div>
