@@ -9,6 +9,7 @@
       <th>Name</th>
       <th>Publisher</th>
       <th>Serial</th>
+      <th>Contributors</th>
       <th>Songs</th>
       <th colspan="3"></th>
     </tr>
@@ -20,6 +21,13 @@
         <td><%= pack.name %></td>
         <td><%= link_to pack.publisher.name, pack.publisher %></td>
         <td><%= pack.serial %></td>
+        <td>
+          <ul class="table-list">
+            <% pack.contributor_relations.each do |contrib| %>
+              <li><%= contrib.full_text %></li>
+            <% end %>
+          </ul>
+        </td>
         <td>
           <ul class="table-list">
             <% pack.songs.each do |song| %>

@@ -4,6 +4,9 @@
 <p>
   <strong>Name:</strong>
   <%= @pack.name %>
+  <% @pack.contrubutor_relations.each do |contrib| %>
+    <%= contrib.full_text %><br/>
+  <% end %>
 </p>
 
 <p>
