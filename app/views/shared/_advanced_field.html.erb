@@ -1,0 +1,7 @@
+<% div_class = 'field' %>
+<% div_class += ' hidden' unless f.object.send(field).present? %>
+
+<div class="<%= div_class %>">
+  <%= f.label field %><br/>
+  <%= f.text_field field %>
+</div>

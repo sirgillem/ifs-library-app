@@ -11,38 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :pre_titles %><br>
-    <%= f.text_field :pre_titles %>
-  </div>
+  <%= render 'shared/advanced_field', f: f, field: :pre_titles %>
   <div class="field">
     <%= f.label :pre_names %><br>
     <%= f.text_field :pre_names %>
   </div>
-  <div class="field">
-    <%= f.label :key_name_prefix %><br>
-    <%= f.text_field :key_name_prefix %>
-  </div>
+  <%= render 'shared/advanced_field', f: f, field: :key_name_prefix %>
   <div class="field">
     <%= f.label :key_name %><br>
     <%= f.text_field :key_name %>
   </div>
-  <div class="field">
-    <%= f.label :post_names %><br>
-    <%= f.text_field :post_names %>
-  </div>
-  <div class="field">
-    <%= f.label :key_name_suffix %><br>
-    <%= f.text_field :key_name_suffix %>
-  </div>
-  <div class="field">
-    <%= f.label :qualifications %><br>
-    <%= f.text_field :qualifications %>
-  </div>
-  <div class="field">
-    <%= f.label :post_titles %><br>
-    <%= f.text_field :post_titles %>
-  </div>
+  <%= render 'shared/advanced_field', f: f, field: :post_names %>
+  <%= render 'shared/advanced_field', f: f, field: :key_name_suffix %>
+  <%= render 'shared/advanced_field', f: f, field: :qualifications %>
+  <%= render 'shared/advanced_field', f: f, field: :post_titles %>
+  <%= link_to 'Advanced', '#', class: 'unhide-siblings' %>
   <div class="actions">
     <%= f.submit %>
   </div>

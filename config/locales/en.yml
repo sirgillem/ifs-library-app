@@ -2,3 +2,11 @@ en:
   attributes:
     sequence: 'Sort order'
     serial: 'Serial No.'
+    pre_titles: 'Titles'
+    pre_names: 'Given Name(s)'
+    key_name_prefix: 'Surname prefix'
+    key_name: 'Surname'
+    post_names: 'Name(s) after Surname'
+    key_name_suffix: 'Suffix'
+    qualifications: 'Qualifications'
+    post_titles: 'Titles after name'
