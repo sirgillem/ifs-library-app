@@ -19,9 +19,7 @@
         <td><%= pack.name %></td>
         <td><%= link_to pack.publisher.name, pack.publisher %></td>
         <td><%= pack.serial %></td>
-        <td><%= link_to 'Show', pack %></td>
-        <td><%= link_to 'Edit', edit_pack_path(pack) %></td>
-        <td><%= link_to 'Destroy', pack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'shared/index_actions', resource: pack %>
       </tr>
     <% end %>
   </tbody>

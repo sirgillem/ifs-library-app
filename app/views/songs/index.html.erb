@@ -39,9 +39,7 @@
         <td><%= song.duration %></td>
         <td><%= song.tempo %></td>
         <td><%= song.purchased_at %></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'shared/index_actions', resource: song %>
       </tr>
     <% end %>
   </tbody>
