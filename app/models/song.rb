@@ -27,4 +27,20 @@ class Song < ActiveRecord::Base
       "#{label} - #{title}"
     end
   end
+
+  # Convert duration to a display string
+  def duration_string
+    return '' unless duration
+    hours = duration / 3600
+    working_dur = duration % 3600
+    minutes = working_dur / 60
+    seconds = working_dur % 60
+    if hours > 0
+      minutes = '%02d' % minutes
+    else
+      hours = nil
+    end
+    seconds = '%02d' % seconds
+    [hours, minutes, seconds].reject(&:blank?).join(':')
+  end
 end

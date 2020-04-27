@@ -54,4 +54,14 @@ class SongTest < ActiveSupport::TestCase
       assert_not_equal rel.person, john
     end
   end
+
+  test 'Duration can be formatted as a string' do
+    @song.duration = 9
+    assert_equal '0:09', @song.duration_string
+    @song.duration = 3599
+    assert_equal '59:59', @song.duration_string
+    @song.duration = 10 * 3600 + 2 * 60 + 1
+    assert_equal '10:02:01', @song.duration_string
+    assert_equal '', Song.new.duration_string
+  end
 end

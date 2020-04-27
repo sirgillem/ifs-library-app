@@ -74,6 +74,20 @@ class SongsController < ApplicationController
     end
   end
 
+  # Convert an input string to a duration in seconds
+  def s_to_duration(time_string)
+    parts = time_string.split(':')
+    # Prepend items to format hh:mm:ss
+    parts.prepend '0' while parts.size < 3
+    error_msg = 'Duration must be in format h:m:s (hours and minutes optional)'
+    errors.add :base, error_msg if parts.size > 3
+    begin
+      parts[0].to_i * 3600 + parts[1].to_i * 60 + parts[2].to_i
+    rescue StandardError
+      errors.add :base, error_msg
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
@@ -82,6 +96,9 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
+      if params[:song][:duration]
+        params[:song][:duration] = s_to_duration(params[:song][:duration])
+      end
       params.require(:song).permit(:title,
                                    :label,
                                    :publisher_id,

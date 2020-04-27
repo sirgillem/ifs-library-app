@@ -153,6 +153,24 @@ class SongsControllerTest < ActionController::TestCase
     assert_not_equal 'New title', @song.title
   end
 
+  test 'update should be able to use a formatted time string' do
+    sign_in @librarian
+    @song_params[:duration] = '123'
+    patch :update, id: @song, song: @song_params
+    @song.reload
+    assert_equal 123, @song.duration
+
+    @song_params[:duration] = '9:04'
+    patch :update, id: @song, song: @song_params
+    @song.reload
+    assert_equal 9 * 60 + 4, @song.duration
+
+    @song_params[:duration] = '01:1:9'
+    patch :update, id: @song, song: @song_params
+    @song.reload
+    assert_equal 3600 + 60 + 9, @song.duration
+  end
+
   test 'should destroy song as librarian' do
     sign_in @librarian
     assert_difference('Song.count', -1) do

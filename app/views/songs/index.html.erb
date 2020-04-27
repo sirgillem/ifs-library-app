@@ -35,7 +35,7 @@
         <td><%= song.pack %></td>
         <td><%= song.recording %></td>
         <td><%= song.style %></td>
-        <td><%= song.duration %></td>
+        <td class="text-right"><%= song.duration_string %></td>
         <td><%= song.tempo %></td>
         <td><%= song.purchased_at %></td>
         <%= render 'shared/index_actions', resource: song %>
