@@ -83,12 +83,6 @@ ul.table-list {
 
 /* forms */
 
-div.nested-fields {
-	div {
-		display:inline-block;
-	}
-}
-
 fieldset {
 	padding-bottom: 15px;
 }
@@ -102,7 +96,7 @@ span.sequence {
 	margin-right: 10px;
 }
 
-div.field-options div {
+div.field-options > div {
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 5px;
