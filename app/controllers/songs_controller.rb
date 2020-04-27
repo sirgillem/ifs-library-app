@@ -18,6 +18,13 @@ class SongsController < ApplicationController
   # GET /songs/new
   def new
     @song = Song.new
+    if params[:template_id]
+      template = SongTemplate.find(params[:template_id])
+      template.song_parts.each do |templ_part|
+        new_part = templ_part.dup
+        @song.song_parts << new_part
+      end
+    end
   end
 
   # GET /songs/1/edit

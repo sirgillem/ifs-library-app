@@ -68,6 +68,24 @@ class SongsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'new from template should initialise parts' do
+    sign_in @librarian
+    template = song_templates(:bigband)
+    get :new, template_id: template.id
+    assert_response :success
+    new_song = assigns(:song)
+    i = 0
+    assert_equal template.song_parts.count, new_song.song_parts.size
+    template.song_parts.each do |part|
+      new_part = new_song.song_parts[i]
+      assert_equal new_part.name, part.name
+      part.instruments.each do |instrument|
+        assert new_part.instruments.contains(instrument)
+      end
+      i += 1
+    end
+  end
+
   test 'should create song as librarian' do
     sign_in @librarian
     assert_difference('Song.count') do
