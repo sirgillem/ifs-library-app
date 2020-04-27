@@ -6,6 +6,10 @@ tenor_sax:
   name: tenor saxophone
   section: sax
 
+bari_sax:
+  name: baritone saxophone
+  section: sax
+
 trombone:
   name: trombone
   section: trombone

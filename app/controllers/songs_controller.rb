@@ -22,6 +22,9 @@ class SongsController < ApplicationController
       template = SongTemplate.find(params[:template_id])
       template.song_parts.each do |templ_part|
         new_part = templ_part.dup
+        templ_part.instruments.each do |inst|
+          new_part.instruments << inst
+        end
         @song.song_parts << new_part
       end
     end

@@ -80,7 +80,7 @@ class SongsControllerTest < ActionController::TestCase
       new_part = new_song.song_parts[i]
       assert_equal new_part.name, part.name
       part.instruments.each do |instrument|
-        assert new_part.instruments.contains(instrument)
+        assert new_part.instruments.include?(instrument)
       end
       i += 1
     end

@@ -1,3 +1,27 @@
 one:
   song_part: opus_one_tenor1
   instrument: tenor_sax
+
+two:
+  song_part: templ_alto1
+  instrument: alto_sax
+
+three:
+  song_part: templ_alto2
+  instrument: alto_sax
+
+four:
+  song_part: templ_tenor1
+  instrument: tenor_sax
+
+five:
+  song_part: templ_tenor2
+  instrument: tenor_sax
+
+six:
+  song_part: templ_bari
+  instrument: bari_sax
+
+seven:
+  song_part: templ_bari
+  instrument: alto_sax
