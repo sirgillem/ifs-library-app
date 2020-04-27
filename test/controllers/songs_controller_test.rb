@@ -66,6 +66,9 @@ class SongsControllerTest < ActionController::TestCase
     sign_in @librarian
     get :new
     assert_response :success
+    # Check blank template_id
+    get :new, template_id: ''
+    assert_response :success
   end
 
   test 'new from template should initialise parts' do
