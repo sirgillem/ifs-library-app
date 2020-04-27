@@ -8,6 +8,24 @@ module Contributable
                                   reject_if: :all_blank
   end
 
+  # Convert contributor list to attribution strings
+  def attributions
+    attribs = {}
+    contributor_relations.each do |rel|
+      role = rel.role.to_sym
+      if attribs[role]
+        attribs[role] << rel.person.full_name
+      else
+        attribs[role] = [rel.person.full_name]
+      end
+    end
+    output = []
+    attribs.each do |role, people|
+      output << "#{role} by #{people.to_sentence}"
+    end
+    return output
+  end
+
   # Add a contributor
   def add_contributor(person, role)
     max_seq = contributor_relations.last.sequence

@@ -1,13 +1,15 @@
 <% provide :title, @song.title %>
 
+<h1><%= @song.to_s %></h1>
+
 <p>
-  <strong>Title:</strong>
-  <%= @song.title %>
+  <%= @song.details %>
 </p>
 
 <p>
-  <strong>Label:</strong>
-  <%= @song.label %>
+  <% @song.attributions.each do |attrib| %>
+    <%= attrib %><br/>
+  <% end %>
 </p>
 
 <p>
@@ -27,28 +29,17 @@
 <% end %>
 
 <p>
-  <% @song.contributor_relations.each do |contribution| %>
-    <%= contribution.full_text %><br/>
-  <% end %>
-</p>
-
-<p>
   <strong>Serial:</strong>
   <%= @song.serial %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @song.details %>
-</p>
-
-<p>
-  <strong>Performance notes:</strong>
+  <strong>Performance notes:</strong><br/>
   <%= @song.notes_perf %>
 </p>
 
 <p>
-  <strong>Librarian notes:</strong>
+  <strong>Librarian notes:</strong><br/>
   <%= @song.notes_lib %>
 </p>
 
@@ -69,7 +60,7 @@
 
 <p>
   <strong>Tempo:</strong>
-  <%= @song.tempo %>
+  <%= @song.tempo %> bpm
 </p>
 
 <p>

@@ -5,6 +5,20 @@ one:
   role: Words
   sequence: 1
 
+one_a:
+  contributable: opus_one
+  contributable_type: Song
+  person: harry
+  role: Words
+  sequence: 0
+
+one_b:
+  contributable: opus_one
+  contributable_type: Song
+  person: bjork
+  role: Words
+  sequence: 10
+
 two:
   contributable: opus_one
   contributable_type: Song

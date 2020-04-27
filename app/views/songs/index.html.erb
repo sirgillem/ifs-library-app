@@ -12,19 +12,16 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
       <th>Label</th>
-      <th>Publisher</th>
-      <th>Serial</th>
-      <th>Details</th>
-      <th>Notes perf</th>
-      <th>Notes lib</th>
+      <th>Title</th>
       <th>Pack</th>
-      <th>Recording</th>
       <th>Style</th>
+      <th>Tempo (bpm)</th>
       <th>Duration</th>
-      <th>Tempo</th>
-      <th>Purchased at</th>
+      <th>Publisher</th>
+      <th>Serial No.</th>
+      <th>Performance notes</th>
+      <th>Librarian notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,19 +29,16 @@
   <tbody>
     <% @songs.each do |song| %>
       <tr>
-        <td><%= song.title %></td>
         <td><%= song.label %></td>
+        <td><%= song.title %></td>
+        <td><%= song.pack %></td>
+        <td><%= song.style %></td>
+        <td class="text-right"><%= song.tempo %></td>
+        <td class="text-right"><%= song.duration_string %></td>
         <td><%= song.publisher %></td>
         <td><%= song.serial %></td>
-        <td><%= song.details %></td>
         <td><%= song.notes_perf %></td>
         <td><%= song.notes_lib %></td>
-        <td><%= song.pack %></td>
-        <td><%= song.recording %></td>
-        <td><%= song.style %></td>
-        <td class="text-right"><%= song.duration_string %></td>
-        <td><%= song.tempo %></td>
-        <td><%= song.purchased_at %></td>
         <%= render 'shared/index_actions', resource: song %>
       </tr>
     <% end %>

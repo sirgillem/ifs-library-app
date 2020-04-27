@@ -64,4 +64,14 @@ class SongTest < ActiveSupport::TestCase
     assert_equal '10:02:01', @song.duration_string
     assert_equal '', Song.new.duration_string
   end
+
+  test 'Attributions appear correctly' do
+    attribs = @song.attributions
+    assert_match 'Words', attribs[0]
+    assert_match people(:harry).full_name, attribs[0]
+    assert_match people(:bjork).full_name, attribs[0]
+    assert_match people(:johndoe).full_name, attribs[0]
+    assert_match 'Music', attribs[1]
+    assert_match people(:beethoven).full_name, attribs[1]
+  end
 end
