@@ -62,4 +62,49 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'songs/show'
   end
+
+  test 'can filter songs by title' do
+    sign_in users(:limited_admin)
+    get songs_path, title: 'opus'
+    assert assigns(:songs).include?(songs(:opus_one))
+    assert_not assigns(:songs).include?(songs(:jingle_bells))
+  end
+
+  test 'can filter songs by label' do
+    sign_in users(:limited_admin)
+    get songs_path, label: ''
+    assert assigns(:songs).include?(songs(:opus_one))
+    assert_not assigns(:songs).include?(songs(:old_song))
+  end
+
+  test 'can filter songs by serial' do
+    sign_in users(:limited_admin)
+    get songs_path, serial: '78'
+    assert assigns(:songs).include?(songs(:night_and_day_hkm))
+    assert_not assigns(:songs).include?(songs(:opus_one))
+  end
+
+  test 'can filter songs by style' do
+    sign_in users(:limited_admin)
+    get songs_path, style: 'swing'
+    assert assigns(:songs).include?(songs(:opus_one))
+    assert_not assigns(:songs).include?(songs(:old_song))
+  end
+
+  test 'can filter songs by tempo' do
+    sign_in users(:limited_admin)
+    get songs_path, min_tempo: 138, max_tempo: 150
+    assert assigns(:songs).include?(songs(:night_and_day_lkf))
+    assert assigns(:songs).include?(songs(:opus_one))
+    assert_not assigns(:songs).include?(songs(:jingle_bells))
+    assert_not assigns(:songs).include?(songs(:old_song))
+  end
+
+  test 'can filter songs by duration' do
+    sign_in users(:limited_admin)
+    get songs_path, min_dur: 200, max_dur: 240
+    assert assigns(:songs).include?(songs(:night_and_day_lkf))
+    assert_not assigns(:songs).include?(songs(:jingle_bells))
+    assert_not assigns(:songs).include?(songs(:opus_one))
+  end
 end

@@ -1,5 +1,17 @@
 class Song < ActiveRecord::Base
   include Contributable
+
+  # Scopes for filtering
+  scope :filter_by_label, ->(label) { where 'LENGTH(label) > 0' }
+  scope :filter_by_title, ->(title) { where('title LIKE ?', "%#{title}%") }
+  scope :filter_by_serial, ->(serial) { where('serial LIKE ?', "%#{serial}%") }
+  scope :filter_by_style, ->(style) { where('style LIKE ?', "%#{style}%") }
+  scope :filter_by_min_dur, ->(min) { where('duration >= ?', min) }
+  scope :filter_by_max_dur, ->(max) { where('duration <= ?', max) }
+  scope :filter_by_min_tempo, ->(min) { where('tempo >= ?', min) }
+  scope :filter_by_max_tempo, ->(max) { where('tempo <= ?', max) }
+  # TODO: filter by part instruments
+
   belongs_to :publisher
   belongs_to :pack
   has_many :song_parts, inverse_of: :song, dependent: :destroy

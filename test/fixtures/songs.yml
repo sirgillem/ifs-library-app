@@ -57,3 +57,8 @@ night_and_day_lkf:
   duration: 220
   tempo: 138
   purchased_at: 2020_04_15
+
+old_song:
+  title: 12 bar blues
+  publisher: pub1
+  tempo: 60

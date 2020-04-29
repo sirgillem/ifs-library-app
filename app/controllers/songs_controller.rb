@@ -7,7 +7,10 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @songs = Song.where(nil)
+    filtering_params.each do |key, value|
+      @songs = @songs.public_send("filter_by_#{key}", value) if key.present?
+    end
   end
 
   # GET /songs/1
@@ -115,5 +118,11 @@ class SongsController < ApplicationController
                                    *publisher_params,
                                    *contributable_params,
                                    *song_part_params)
+    end
+
+    # Get allowed filtering parameters. Used to create scope calls in the song model.
+    def filtering_params
+      params.slice(:title, :label, :serial, :style, :min_dur, :max_dur,
+                   :min_tempo, :max_tempo)
     end
 end
