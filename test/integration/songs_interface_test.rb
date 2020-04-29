@@ -72,7 +72,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
 
   test 'can filter songs by label' do
     sign_in users(:limited_admin)
-    get songs_path, label: ''
+    get songs_path, label: '1'
     assert assigns(:songs).include?(songs(:opus_one))
     assert_not assigns(:songs).include?(songs(:old_song))
   end
@@ -102,7 +102,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
 
   test 'can filter songs by duration' do
     sign_in users(:limited_admin)
-    get songs_path, min_dur: 200, max_dur: 240
+    get songs_path, min_dur: '3:20', max_dur: '4:00'
     assert assigns(:songs).include?(songs(:night_and_day_lkf))
     assert_not assigns(:songs).include?(songs(:jingle_bells))
     assert_not assigns(:songs).include?(songs(:opus_one))
@@ -113,5 +113,19 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     get songs_path, instrument: 'clarinet'
     assert assigns(:songs).include?(songs(:old_song))
     assert_not assigns(:songs).include?(songs(:jingle_bells))
+  end
+
+  test 'blank filters act as no filtering' do
+    sign_in users(:limited_admin)
+    get songs_path,
+        title: '',
+        serial: '',
+        style: '',
+        min_dur: '',
+        max_dur: '',
+        min_tempo: '',
+        max_tempo: '',
+        instrument: ''
+    assert_equal Song.all.count, assigns(:songs).size
   end
 end

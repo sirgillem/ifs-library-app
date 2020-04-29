@@ -2,7 +2,7 @@ class Song < ActiveRecord::Base
   include Contributable
 
   # Scopes for filtering
-  scope :filter_by_label, ->(label) { where 'LENGTH(label) > 0' }
+  scope :filter_by_label, ->(label) { where 'LENGTH(label) > 0' if label.present? }
   scope :filter_by_title, ->(title) { where('title LIKE ?', "%#{title}%") }
   scope :filter_by_serial, ->(serial) { where('serial LIKE ?', "%#{serial}%") }
   scope :filter_by_style, ->(style) { where('style LIKE ?', "%#{style}%") }

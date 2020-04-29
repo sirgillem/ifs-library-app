@@ -101,3 +101,13 @@ div.field-options > div {
 	vertical-align: top;
 	margin-right: 5px;
 }
+
+div.filter-form {
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 1px solid grey;
+	span {
+		white-space: nowrap;
+		margin-right: 10px;
+	}
+}

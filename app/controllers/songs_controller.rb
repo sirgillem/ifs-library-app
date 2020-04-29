@@ -9,7 +9,10 @@ class SongsController < ApplicationController
   def index
     @songs = Song.where(nil)
     filtering_params.each do |key, value|
-      @songs = @songs.public_send("filter_by_#{key}", value) if key.present?
+      if value.present?
+        value = s_to_duration(value) if ['min_dur', 'max_dur'].include?(key)
+        @songs = @songs.public_send("filter_by_#{key}", value)
+      end
     end
   end
 

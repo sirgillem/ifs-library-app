@@ -1,0 +1,48 @@
+<h3>Filter by:</h3>
+<div class="filter-form">
+  <%= form_tag path, method: 'get' do %>
+    <div>
+      <span>
+        <%= label_tag :title %>
+        <%= text_field_tag :title, params[:title] %>
+      </span>
+    
+      <span>
+        <%= check_box_tag :label, 'exists', params[:label].present? %>
+        <%= label_tag :label, 'Labelled' %>
+      </span>
+    
+      <span>
+        <%= label_tag :serial, 'Serial No.' %>
+        <%= text_field_tag :serial, params[:serial] %>
+      </span>
+    
+      <span>
+        <%= label_tag :style %>
+        <%= text_field_tag :style, params[:style] %>
+      </span>
+    
+      <span>
+        <%= label_tag :min_dur, 'Duration: ' %>
+        <%= text_field_tag :min_dur, params[:min_dur], size: 8 %>
+        <%= label_tag :max_dur, 'to' %>
+        <%= text_field_tag :max_dur, params[:max_dur], size: 8 %>
+      </span>
+    
+      <span>
+        <%= label_tag :min_tempo, 'Tempo: ' %>
+        <%= text_field_tag :min_tempo, params[:min_tempo], size: 8 %>
+        <%= label_tag :max_tempo, 'to' %>
+        <%= text_field_tag :max_tempo, params[:max_tempo], size: 8 %>
+      </span>
+    
+      <span>
+        <%= label_tag :instrument %>
+        <%= text_field_tag :instrument, params[:instrument] %>
+      </span>
+    </div>
+  
+    <%= submit_tag 'Filter' %>
+    <%= link_to 'Clear filter', path %>
+  <% end %>
+</div>

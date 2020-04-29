@@ -2,12 +2,16 @@
 
 <h1>Listing Songs</h1>
 
-<%= form_tag(new_song_path, method: 'get') do %>
-  <%= submit_tag 'New Song' %>
-  <%= label_tag :template_id, 'Template (opt.)' %>
-  <%= select_tag :template_id, options_from_collection_for_select(
-    SongTemplate.order(:name).collect, 'id', 'name'), { include_blank: true } %>
+<% if false #librarian? %>
+  <%= form_tag(new_song_path, method: 'get') do %>
+    <%= submit_tag 'New Song' %>
+    <%= label_tag :template_id, 'Template (opt.)' %>
+    <%= select_tag :template_id, options_from_collection_for_select(
+      SongTemplate.order(:name).collect, 'id', 'name'), { include_blank: true } %>
+  <% end %>
 <% end %>
+
+<%= render 'filter_form', path: songs_path %>
 
 <table>
   <thead>
