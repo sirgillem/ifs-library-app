@@ -1,8 +1,8 @@
 <% provide :title, 'All Songs' %>
 
-<h1>Listing Songs</h1>
+<h1>Song List</h1>
 
-<% if false #librarian? %>
+<% if librarian? %>
   <%= form_tag(new_song_path, method: 'get') do %>
     <%= submit_tag 'New Song' %>
     <%= label_tag :template_id, 'Template (opt.)' %>
