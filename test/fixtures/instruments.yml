@@ -25,3 +25,7 @@ trumpet:
 drum_kit:
   name: drum kit
   section: rhythm
+
+clarinet:
+  name: clarinet
+  section: sax

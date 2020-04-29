@@ -25,3 +25,7 @@ six:
 seven:
   song_part: templ_bari
   instrument: alto_sax
+
+eight:
+  song_part: old_song_part
+  instrument: clarinet

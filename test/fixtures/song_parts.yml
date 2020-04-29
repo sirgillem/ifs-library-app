@@ -14,3 +14,8 @@ templ_<%= part %>:
   sequence: <%= n %>
   <% n += 1 %>
 <% end %>
+
+old_song_part:
+  song: old_song
+  name: Clarinet
+  sequence: 0

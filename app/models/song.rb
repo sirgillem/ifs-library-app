@@ -10,7 +10,11 @@ class Song < ActiveRecord::Base
   scope :filter_by_max_dur, ->(max) { where('duration <= ?', max) }
   scope :filter_by_min_tempo, ->(min) { where('tempo >= ?', min) }
   scope :filter_by_max_tempo, ->(max) { where('tempo <= ?', max) }
-  # TODO: filter by part instruments
+  scope :filter_by_instrument, ->(instrument) do
+    joins(song_parts: { part_instruments: :instrument })
+      .where("#{Instrument.table_name}.name LIKE ?", "%#{instrument}%")
+      .uniq
+  end
 
   belongs_to :publisher
   belongs_to :pack
@@ -33,7 +37,7 @@ class Song < ActiveRecord::Base
   end
 
   def to_s
-    if label.empty?
+    if label && label.empty?
       title
     else
       "#{label} - #{title}"

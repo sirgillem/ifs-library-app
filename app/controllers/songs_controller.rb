@@ -123,6 +123,6 @@ class SongsController < ApplicationController
     # Get allowed filtering parameters. Used to create scope calls in the song model.
     def filtering_params
       params.slice(:title, :label, :serial, :style, :min_dur, :max_dur,
-                   :min_tempo, :max_tempo)
+                   :min_tempo, :max_tempo, :instrument)
     end
 end

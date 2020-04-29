@@ -107,4 +107,11 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
     assert_not assigns(:songs).include?(songs(:jingle_bells))
     assert_not assigns(:songs).include?(songs(:opus_one))
   end
+
+  test 'can filter songs by instrument' do
+    sign_in users(:limited_admin)
+    get songs_path, instrument: 'clarinet'
+    assert assigns(:songs).include?(songs(:old_song))
+    assert_not assigns(:songs).include?(songs(:jingle_bells))
+  end
 end
