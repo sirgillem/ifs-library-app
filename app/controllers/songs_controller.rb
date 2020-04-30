@@ -16,6 +16,17 @@ class SongsController < ApplicationController
     end
   end
 
+  # GET /catalogue
+  def catalogue
+    @songs = Song.filter_by_label(true).order(:label)
+    filtering_params.each do |key, value|
+      if value.present?
+        value = s_to_duration(value) if ['min_dur', 'max_dur'].include?(key)
+        @songs = @songs.public_send("filter_by_#{key}", value)
+      end
+    end
+  end
+
   # GET /songs/1
   # GET /songs/1.json
   def show

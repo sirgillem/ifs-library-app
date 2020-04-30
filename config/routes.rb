@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, skip: :registrations
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
+  get '/catalogue', to: 'songs#catalogue'
   resources :publishers
   resources :packs
   resources :songs

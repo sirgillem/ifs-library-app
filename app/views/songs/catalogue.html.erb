@@ -1,0 +1,33 @@
+<% provide :title, 'All Songs' %>
+
+<h1>Catalogue</h1>
+
+<p>
+  For more details on each song and to see unlabelled songs, got to
+  the <%= link_to 'Songs Index', songs_path %>.
+
+<%= render 'filter_form', path: '/catalogue' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Title</th>
+      <th>Performance notes</th>
+      <th/>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.label %></td>
+        <td><%= song.title %></td>
+        <td><%= song.notes_perf %></td>
+        <td><%= link_to 'Show', song %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
