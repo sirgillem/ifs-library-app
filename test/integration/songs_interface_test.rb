@@ -128,4 +128,11 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
         instrument: ''
     assert_equal Song.all.count, assigns(:songs).size
   end
+
+  test 'can filter catalogue' do
+    sign_in users(:bob)
+    get '/catalogue', min_tempo: 130, max_dur: '4:00'
+    assert assigns(:songs).include?(songs(:night_and_day_lkf))
+    assert_not assigns(:songs).include?(songs(:opus_one))
+  end
 end

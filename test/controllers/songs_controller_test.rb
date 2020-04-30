@@ -193,4 +193,16 @@ class SongsControllerTest < ActionController::TestCase
       delete :destroy, id: @song
     end
   end
+
+  test 'should not get catalogue when not logged in' do
+    get :catalogue
+    assert_redirected_to root_path
+  end
+
+  test 'should get catalogue when logged in' do
+    sign_in @charles
+    get :catalogue
+    assert_response :success
+    assert_equal Song.filter_by_label(true).count, assigns(:songs).count
+  end
 end
