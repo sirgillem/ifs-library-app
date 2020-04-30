@@ -1,15 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to image_tag('ifs-logo.png', alt: 'Library home', height: '60'), root_path, id: 'logo' %>
+    <%= link_to image_tag('ifs-logo.png', alt: 'Library home', height: '60'), 
+                          'https://www.infullswing.org.au', id: 'logo' %>
     <nav>
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="https://www.infullswing.org.au">Home</a></li>
-        <li><%= link_to 'Library', root_path %></li>
-        <li><%= link_to 'Catalogue', '#' %></li>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Catalogue', catalogue_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li id="admin"><%= if current_user.admin? then link_to 'User Admin', users_path end %></li>
+          <li id="invite_user"><%= link_to 'Invite', new_user_invitation_path %></li>
           <li id="user_id"><%= link_to current_user.email, edit_user_registration_path %></li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         <% else %>

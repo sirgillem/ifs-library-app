@@ -1,6 +1,11 @@
 <% provide :title, 'Invite user' %>
 <h2><%= t "devise.invitations.new.header" %></h2>
 
+<p>
+  Invite someone to access the library, such as a new member or a fill-in who wants to see what
+  we have available.
+</p>
+
 <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

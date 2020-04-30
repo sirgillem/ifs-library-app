@@ -1,10 +1,15 @@
 <% provide(:title, 'Home') %>
-<h1>Catalogue Home</h1>
+<h1>Library</h1>
 <p>
-  This is the home page for the In Full Swing catalogue app.
+  Welcome to the In Full Swing Library!
 </p>
 <% if user_signed_in? %>
-  <h2>Catalogue links</h2>
+  <p>
+    Follow the links below to view our catalogue of songs, or find information
+    on what we have in our library.
+  </p>
+  <p><strong><%= link_to 'View the catalogue', catalogue_path %></strong></p>
+  <h2>Views</h2>
   <ul>
     <li><%= link_to 'All Songs', songs_path %></li>
     <li><%= link_to 'All Parts', song_parts_path %></li>
@@ -15,5 +20,8 @@
     <li><%= link_to 'Instruments', instruments_path %></li>
   </ul>
 <% else %>
-  <%= link_to 'Sign in', new_user_session_path %>
+  <p>
+    Please <%= link_to 'sign in', new_user_session_path %>, or speak to someone
+    in the band about getting an invitation to access the library.
+  </p>
 <% end %>
