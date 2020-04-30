@@ -17,3 +17,6 @@
 
 # Ignore debugger history
 /.byebug_history
+
+# Ignore compiled assets
+/public/assets
