@@ -59,4 +59,10 @@ class Song < ActiveRecord::Base
     seconds = '%02d' % seconds
     [hours, minutes, seconds].reject(&:blank?).join(':')
   end
+
+  # Get the sorting key so labels can be sorted alphanumerically
+  def sort_key
+    key = label.gsub(/(\d+)/) { |n| '%05d' % n.to_i }
+    "#{key}, #{title}"
+  end
 end

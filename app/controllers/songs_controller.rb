@@ -7,25 +7,26 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.where(nil).order(:label, :title)
+    @songs = Song.where(nil)
     filtering_params.each do |key, value|
       if value.present?
         value = s_to_duration(value) if ['min_dur', 'max_dur'].include?(key)
         @songs = @songs.public_send("filter_by_#{key}", value)
       end
     end
-    @songs.order(:label, :title)
+    @songs = @songs.sort_by(&:sort_key)
   end
 
   # GET /catalogue
   def catalogue
-    @songs = Song.filter_by_label(true).order(:label, :title)
+    @songs = Song.filter_by_label(true)
     filtering_params.each do |key, value|
       if value.present?
         value = s_to_duration(value) if ['min_dur', 'max_dur'].include?(key)
         @songs = @songs.public_send("filter_by_#{key}", value)
       end
     end
+    @songs = @songs.sort_by(&:sort_key)
   end
 
   # GET /songs/1
