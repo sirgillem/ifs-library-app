@@ -109,6 +109,14 @@ class SongsControllerTest < ActionController::TestCase
     end
   end
 
+  test 'should create song with no duration' do
+    sign_in @librarian
+    @song_params[:duration] = ''
+    assert_difference 'Song.count' do
+      post :create, song: @song_params
+    end
+  end
+
   test 'should show song as any user' do
     sign_in @charles
     get :show, id: @song

@@ -96,6 +96,7 @@ class SongsController < ApplicationController
   # Convert an input string to a duration in seconds
   def s_to_duration(time_string)
     parts = time_string.split(':')
+    return nil if time_string.blank?
     # Prepend items to format hh:mm:ss
     parts.prepend '0' while parts.size < 3
     error_msg = 'Duration must be in format h:m:s (hours and minutes optional)'

@@ -62,7 +62,11 @@ class Song < ActiveRecord::Base
 
   # Get the sorting key so labels can be sorted alphanumerically
   def sort_key
-    key = label.gsub(/(\d+)/) { |n| '%05d' % n.to_i }
+    if label
+      key = label.gsub(/(\d+)/) { |n| '%05d' % n.to_i }
+    else
+      key = ''
+    end
     "#{key}, #{title}"
   end
 end
