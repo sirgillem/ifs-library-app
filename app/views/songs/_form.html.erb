@@ -73,12 +73,6 @@
     <%= f.label :tempo %><br>
     <%= f.text_field :tempo %>
   </div>
-  <div class="field">
-    <%= f.label :purchased_at %><br>
-    <%= f.date_select :purchased_at,
-                      start_year: 1980,
-                      end_year: Date.today.year %>
-  </div>
 
   <%= render 'shared/song_part_fieldset', f: f %>
 

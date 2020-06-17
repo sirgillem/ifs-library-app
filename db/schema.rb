@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200422095153) do
+ActiveRecord::Schema.define(version: 20200617083705) do
 
   create_table "contributor_relations", force: :cascade do |t|
     t.integer  "contributable_id",   limit: 4
@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 20200422095153) do
     t.string   "style",        limit: 255
     t.integer  "duration",     limit: 4
     t.integer  "tempo",        limit: 4
-    t.date     "purchased_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

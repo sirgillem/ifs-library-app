@@ -50,8 +50,7 @@ class SongsInterfaceTest < ActionDispatch::IntegrationTest
                     recording: 'www.youtube.com',
                     style: 'Bebop',
                     duration: 372,
-                    tempo: 300,
-                    purchased_at: Date.today }
+                    tempo: 300}
     post songs_path, song: song_params
     assert_equal init_songs_count + 1, Song.count
     assert_equal init_contribs_count + 2, ContributorRelation.count

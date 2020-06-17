@@ -131,7 +131,6 @@ class SongsController < ApplicationController
                                    :style,
                                    :duration,
                                    :tempo,
-                                   :purchased_at,
                                    *publisher_params,
                                    *contributable_params,
                                    *song_part_params)

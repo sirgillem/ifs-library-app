@@ -63,11 +63,6 @@
   <%= @song.tempo %> bpm
 </p>
 
-<p>
-  <strong>Purchased at:</strong>
-  <%= @song.purchased_at %>
-</p>
-
 <%= render 'song_parts/member_list', resource: @song %>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |

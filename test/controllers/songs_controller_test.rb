@@ -14,7 +14,6 @@ class SongsControllerTest < ActionController::TestCase
                      notes_perf: @song.notes_perf,
                      pack: @song.pack,
                      publisher: @song.publisher,
-                     purchased_at: @song.purchased_at,
                      recording: @song.recording,
                      serial: @song.serial,
                      style: @song.style,
