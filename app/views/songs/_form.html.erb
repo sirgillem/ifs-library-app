@@ -12,13 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :label %><br>
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :label %><br>
-    <%= f.text_field :label %>
+    <%= f.label :details %><br>
+    <%= f.text_area :details %>
   </div>
+
+  <%= render 'shared/contributor_relation_fieldset', f: f %>
+
   <div class="field field-options">
     <div class="select-fields">
       <% if @song.publisher && @song.publisher.new_record? %>
@@ -38,16 +45,9 @@
                    { include_blank: true }, class: 'select-searchable' %>
     </div>
   </div>
-
-  <%= render 'shared/contributor_relation_fieldset', f: f %>
-
   <div class="field">
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
   </div>
   <div class="field">
     <%= f.label :notes_perf %><br>
@@ -66,12 +66,12 @@
     <%= f.text_field :style %>
   </div>
   <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.text_field :duration, value: f.object.duration_string %>
-  </div>
-  <div class="field">
     <%= f.label :tempo %><br>
     <%= f.text_field :tempo %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.text_field :duration, value: f.object.duration_string %>
   </div>
 
   <%= render 'shared/song_part_fieldset', f: f %>
