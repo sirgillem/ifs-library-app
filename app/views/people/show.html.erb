@@ -1,44 +1,21 @@
 <% provide :title, @person.full_name %>
 
-<p>
-  <strong>Pre titles:</strong>
-  <%= @person.pre_titles %>
-</p>
+<h1><%= @person.full_name %></h1>
 
 <p>
-  <strong>Pre names:</strong>
-  <%= @person.pre_names %>
+  <%= @person.full_name %> has contributed to <%= @person.contributor_relations.count %> songs and packs.
 </p>
-
-<p>
-  <strong>Key name prefix:</strong>
-  <%= @person.key_name_prefix %>
-</p>
-
-<p>
-  <strong>Key name:</strong>
-  <%= @person.key_name %>
-</p>
-
-<p>
-  <strong>Post names:</strong>
-  <%= @person.post_names %>
-</p>
-
-<p>
-  <strong>Key name suffix:</strong>
-  <%= @person.key_name_suffix %>
-</p>
-
-<p>
-  <strong>Qualifications:</strong>
-  <%= @person.qualifications %>
-</p>
-
-<p>
-  <strong>Post titles:</strong>
-  <%= @person.post_titles %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Song/Pack</th>
+      <th>Contribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @person.contributor_relations %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

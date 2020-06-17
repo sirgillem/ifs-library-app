@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Contributions</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @people.each do |person| %>
       <tr>
         <td><%= person.sort_name %></td>
+        <td><%= person.contributor_relations.count %></td>
         <%= render 'shared/index_actions', resource: person %>
       </tr>
     <% end %>
