@@ -2,7 +2,7 @@
 
 function stripSortIndicator(e) {
 	if (e.textContent.match('[\u25b2\u25bc]$')) {
-		e.textContent = e.textContent.slice(0,-2);
+		e.textContent = e.textContent.slice(0,-1);
 	};
 };
 
@@ -23,9 +23,9 @@ function makeTableSortable(){
 			// We only sort by one column at a time, so show it that way
 			th.parentNode.querySelectorAll('th').forEach(th1 => stripSortIndicator(th1));
 			if (this.asc) {
-				th.textContent += " \u25b2";
+				th.textContent += "\u25b2";
 			} else {
-				th.textContent += " \u25bc";
+				th.textContent += "\u25bc";
 			};
 		}))
 	});
